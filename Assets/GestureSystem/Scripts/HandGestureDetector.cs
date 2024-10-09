@@ -40,7 +40,7 @@ namespace Cacophony
             return _confidenceBuffer.SmoothConfidence(currentSample);
         }
 
-        private void ResolveState(float currentConfidence)
+        public void ResolveState(float currentConfidence)
         {
             if (reset) state = GestureState.RESET;
 
@@ -52,24 +52,24 @@ namespace Cacophony
                 case GestureState.DETECTING:
                     if (currentConfidence >= handGesture.confidenceThreshold)
                     {
-                        OnStart.Invoke();
+                        OnStart?.Invoke();
                         state = GestureState.HOLD;
                     }
                     break;
                 case GestureState.HOLD:
                     if (currentConfidence < handGesture.confidenceThreshold)
                     {
-                        OnEnd.Invoke();
+                        OnEnd?.Invoke();
                         state = GestureState.DETECTING;
                     }
                     else 
                     {
-                        OnHold.Invoke();
+                        OnHold?.Invoke();
                     }
                     break;
                 case GestureState.RESET:
                     state = GestureState.IDLE;
-                    OnCancel.Invoke();
+                    OnCancel?.Invoke();
                     detectorOn = false;
                     reset = false;
                     break;

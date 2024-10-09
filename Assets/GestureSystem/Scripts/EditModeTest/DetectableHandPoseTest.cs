@@ -1,56 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEditor.VersionControl;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Cacophony
 {
+namespace Testing
+{
     public class DetectableHandPoseTest
     {
+        public DetectableHandPose detectable;
 
-        private SimpleHandPose CreateFistPose()
+        [OneTimeSetUp]
+        public void CreateDetectable()
         {
-            SimpleHandPose pose = new SimpleHandPose();
-            foreach(var finger in pose.fingers)
-            {
-                finger.curl = 1;
-                finger.bend = 1;
-                finger.splay = 0;
-            }
-            pose.palmNormal = new Vector3(0 -1, 0);
-            pose.palmDirection = new Vector3(0, 0, 1);
-            return pose;
+            detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
         }
-
-        private SimpleHandPose CreatePointingPose()
-        {
-            SimpleHandPose pose = CreateFistPose();
-            pose.index.curl = 0;
-            pose.index.bend = 0;
-
-            return pose;
-        }
-
-        private SimpleHandPose CreateExtendedPose()
-        {
-            SimpleHandPose pose = new SimpleHandPose();
-            foreach(var finger in pose.fingers)
-            {
-                finger.splay = 1f;
-            }
-            pose.palmNormal = new Vector3(0 -1, 0);
-            pose.palmDirection = new Vector3(0, 0, 1);
-            return pose;
-        }
-
 
         [Test]
         public void EvaluatingTheSamePoseReturnsFullConfidence()
         {
-            SimpleHandPose poseA = CreateFistPose();
-            DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
+            SimpleHandPose poseA = Helper.CreateFistPose();
             detectable.handPose = poseA;
             
             float confidence = detectable.Evaluate(poseA);
@@ -61,9 +29,8 @@ namespace Cacophony
         [Test]
         public void EvaluatingOppositePosesReturnsLowConfidence()
         {
-            SimpleHandPose poseA = CreateFistPose();
-            SimpleHandPose poseB = CreateExtendedPose();
-            DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
+            SimpleHandPose poseA = Helper.CreateFistPose();
+            SimpleHandPose poseB = Helper.CreateExtendedPose();
             detectable.handPose = poseA;
             
             float confidence = detectable.Evaluate(poseB);
@@ -74,9 +41,8 @@ namespace Cacophony
         [Test]
         public void EvaluatingSimilarPosesReturnsModerateConfidence()
         {
-            SimpleHandPose poseA = CreateFistPose();
-            SimpleHandPose poseB = CreatePointingPose();
-            DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
+            SimpleHandPose poseA = Helper.CreateFistPose();
+            SimpleHandPose poseB = Helper.CreatePointingPose();
             detectable.handPose = poseA;
             
             float confidence = detectable.Evaluate(poseB);
@@ -87,10 +53,9 @@ namespace Cacophony
         [Test]
         public void OrthoganolPalmDirectionWithAlignedNormalReturnsZeroConfidence()
         {
-            SimpleHandPose poseA = CreateFistPose();
-            SimpleHandPose poseB = CreateFistPose();
+            SimpleHandPose poseA = Helper.CreateFistPose();
+            SimpleHandPose poseB = Helper.CreateFistPose();
 
-            DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
             detectable.handPose = poseA;
             
             // Rotate the palm 90 around the normal 
@@ -103,10 +68,9 @@ namespace Cacophony
         [Test]
         public void OrthoganolPalmDirectionAndNormalReturnsZeroConfidence()
         {
-            SimpleHandPose poseA = CreateFistPose();
-            SimpleHandPose poseB = CreateFistPose();
+            SimpleHandPose poseA = Helper.CreateFistPose();
+            SimpleHandPose poseB = Helper.CreateFistPose();
 
-            DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
             detectable.handPose = poseA;
             
             // Rotate the palm 90 around the normal and the normal about the direction
@@ -120,10 +84,9 @@ namespace Cacophony
         [Test]
         public void InversePalmDirectionReturnsZeroConfidence()
         {
-            SimpleHandPose poseA = CreateFistPose();
-            SimpleHandPose poseB = CreateFistPose();
+            SimpleHandPose poseA = Helper.CreateFistPose();
+            SimpleHandPose poseB = Helper.CreateFistPose();
 
-            DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
             detectable.handPose = poseA;
             
             // Rotate the palm 90 around the normal and the normal about the direction
@@ -136,10 +99,9 @@ namespace Cacophony
         [Test]
         public void ZeroVectorDirectionDoesntAffectConfidence()
         {
-            SimpleHandPose poseA = CreateFistPose();
-            SimpleHandPose poseB = CreateFistPose();
+            SimpleHandPose poseA = Helper.CreateFistPose();
+            SimpleHandPose poseB = Helper.CreateFistPose();
 
-            DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
             detectable.handPose = poseA;
             
             // When
@@ -152,10 +114,9 @@ namespace Cacophony
         [Test]
         public void NonUnitVectorDirectionDoesntAffectConfidence()
         {
-            SimpleHandPose poseA = CreateFistPose();
-            SimpleHandPose poseB = CreateFistPose();
+            SimpleHandPose poseA = Helper.CreateFistPose();
+            SimpleHandPose poseB = Helper.CreateFistPose();
 
-            DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
             detectable.handPose = poseA;
             
             // When 
@@ -167,4 +128,5 @@ namespace Cacophony
         }
     }
 
+}
 }
