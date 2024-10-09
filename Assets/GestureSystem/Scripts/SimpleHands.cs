@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 
 namespace Cacophony
 {
@@ -31,7 +32,10 @@ namespace Cacophony
         public SimpleFinger middle;
         public SimpleFinger ring;
         public SimpleFinger pinky;
+        
+        [Tooltip("Provide a zero vector to ignore direction")]
         public Vector3 palmDirection;
+        [Tooltip("Provide a zero vector to ignore normal")]
         public Vector3 palmNormal;
 
         private SimpleFinger[] _fingers;
@@ -46,6 +50,9 @@ namespace Cacophony
             _fingers[2] = middle = new SimpleFinger { };
             _fingers[3] = ring = new SimpleFinger { };
             _fingers[4] = pinky = new SimpleFinger { };
+
+            palmDirection = Vector3.forward;
+            palmNormal = Vector3.down;
         }
     }
     

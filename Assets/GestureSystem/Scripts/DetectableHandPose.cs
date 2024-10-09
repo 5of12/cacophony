@@ -6,7 +6,7 @@ namespace Cacophony
     public class DetectableHandPose : IDetectable<SimpleHandPose>
     {
         public SimpleHandPose handPose;
-
+        
         public override float Evaluate(SimpleHandPose input)
         {
             // Sum the dot products between available finger curls and normalise
@@ -23,9 +23,9 @@ namespace Cacophony
             }
             float fingerConfidence = 1 - (confidence / count);
 
-            float dirDif = Vector3.Dot(input.palmDirection, handPose.palmDirection);
-            float normDif = Vector3.Dot(input.palmNormal, handPose.palmNormal);
-            float palmConfidence = (dirDif + normDif) / 2;
+            float dirDif = input.palmDirection != Vector3.zero ? Vector3.Dot(input.palmDirection.normalized, handPose.palmDirection.normalized) : 1;
+            float normDif = input.palmDirection != Vector3.zero ? Vector3.Dot(input.palmNormal.normalized, handPose.palmNormal.normalized) : 1;
+            float palmConfidence = dirDif * normDif;
 
             return fingerConfidence * palmConfidence;
         }
