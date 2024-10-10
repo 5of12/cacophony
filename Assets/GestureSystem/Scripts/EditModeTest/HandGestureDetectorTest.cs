@@ -17,11 +17,13 @@ public class HandGestureDetectorTest
         gameObject = new GameObject();
         detector = gameObject.AddComponent<HandGestureDetector>();
         gesture = ScriptableObject.CreateInstance<HandGestureDefinition>();
+        gesture.positivePoses = new();
+        gesture.negativePoses = new();
         gesture.confidenceThreshold = 0.95f;
         detector.handGesture = gesture;
     }
 
-    // A Test behaves as an ordinary method
+    #region State machine Tests
     [Test]
     public void IdleStateMovesToDetectingWhenEnabled()
     {
@@ -82,6 +84,70 @@ public class HandGestureDetectorTest
         Assert.AreEqual(false, detector.detectorOn);
         Assert.AreEqual(false, detector.reset);
     }
+    #endregion
+
+    #region EvaluationTests
+
+    [Test]
+    public void PerfectMatchingPoseOnlyTriggersHoldWhenBufferFull()
+    {
+        detector.state = GestureState.DETECTING;
+        detector.detectorOn = true;
+        detector.Initialise();
+        SimpleHandPose fistPose = Helper.CreateFistPose();
+        DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
+        detectable.handPose = fistPose;
+        gesture.positivePoses.Add(detectable);
+
+        detector.Evaluate(fistPose);
+        Assert.AreEqual(GestureState.DETECTING, detector.state);
+        detector.Evaluate(fistPose);
+        Assert.AreEqual(GestureState.DETECTING, detector.state);
+        detector.Evaluate(fistPose);
+        Assert.AreEqual(GestureState.HOLD, detector.state);
+    }
+
+    [Test]
+    public void PerfectMatchingPoseTriggersHoldEarlyWhenThresholdLow()
+    {
+        detector.state = GestureState.DETECTING;
+        detector.detectorOn = true;
+        detector.Initialise();
+        SimpleHandPose fistPose = Helper.CreateFistPose();
+        DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
+        detectable.handPose = fistPose;
+        gesture.positivePoses.Add(detectable);
+        gesture.confidenceThreshold = 0.5f;
+
+        detector.Evaluate(fistPose);
+        Assert.AreEqual(GestureState.DETECTING, detector.state);
+        detector.Evaluate(fistPose);
+        Assert.AreEqual(GestureState.HOLD, detector.state);
+        detector.Evaluate(fistPose);
+        Assert.AreEqual(GestureState.HOLD, detector.state);
+    }
+
+    [Test]
+    public void PoorlyMatchingPoseDoesNotTriggerHoldWhenBufferFull()
+    {
+        detector.state = GestureState.DETECTING;
+        detector.detectorOn = true;
+        detector.Initialise();
+        SimpleHandPose pointPose = Helper.CreatePointingPose();
+        SimpleHandPose extendPose = Helper.CreateExtendedPose();
+        DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
+        detectable.handPose = pointPose;
+        gesture.positivePoses.Add(detectable);
+
+        detector.Evaluate(extendPose);
+        Assert.AreEqual(GestureState.DETECTING, detector.state);
+        detector.Evaluate(extendPose);
+        Assert.AreEqual(GestureState.DETECTING, detector.state);
+        detector.Evaluate(extendPose);
+        Assert.AreEqual(GestureState.DETECTING, detector.state);
+    }
+
+    #endregion
 }
 
 

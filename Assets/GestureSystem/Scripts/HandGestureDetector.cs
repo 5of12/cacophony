@@ -16,12 +16,17 @@ namespace Cacophony
 
         public GestureState state;
 
-        [Header("Debugging")]
+        [Header("Exposed for Debugging")]
         public bool detectorOn = false;
         public bool reset = false;
 
 
         void OnEnable()
+        {
+            Initialise();
+        }
+        
+        public void Initialise()
         {
             _confidenceBuffer = new ConfidenceBuffer(3);
             state = GestureState.IDLE;
