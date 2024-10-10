@@ -25,17 +25,20 @@ namespace Cacophony
         {
             Initialise();
         }
-        
+
         public void Initialise()
         {
             _confidenceBuffer = new ConfidenceBuffer(3);
             state = GestureState.IDLE;
+            _confidence = 0;
         }
 
         public override void Evaluate(SimpleHandPose pose)
         {
+            float previousConfidence = _confidence;
             _confidence = UpdateConfidence(pose);
-            ResolveState(_confidence);
+            float futureConfidence = _confidence + (_confidence - previousConfidence);
+            ResolveState(futureConfidence);
         }
 
         public float UpdateConfidence(SimpleHandPose input)
@@ -79,6 +82,11 @@ namespace Cacophony
                     reset = false;
                     break;
             }
+        }
+
+        public float GetConfidence()
+        {
+            return _confidence;
         }
     }
 }
