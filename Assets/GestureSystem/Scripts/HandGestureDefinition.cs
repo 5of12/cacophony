@@ -6,9 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Cacophony/HandGesture", fileName = "Gesture")]
 public class HandGestureDefinition : IGestureDefinition<DetectableHandPose, SimpleHandPose>
 {
+    [Range(0,1)]
     public float confidenceThreshold = 0.95f;
-    public float moveThresholdM = 0.02f;
 
+    [Range(0,1)]
+    public float moveThresholdM = 0.02f;
     
     public override float Evaluate(SimpleHandPose input)
     {
