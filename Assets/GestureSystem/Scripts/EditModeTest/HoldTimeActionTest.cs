@@ -1,8 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 using Cacophony;
-using System.Collections;
 
 public class HoldTimeActionTest
 {
