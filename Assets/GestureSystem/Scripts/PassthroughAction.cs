@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Cacophony {
     [CreateAssetMenu(menuName = "Cacophony/PassthroughAction", fileName = "Passthrough")]
@@ -16,6 +13,7 @@ namespace Cacophony {
 
         public override void Initialise(IDetectionSource detector)
         {
+            base.Initialise();
             detector.OnStart.AddListener( HandleStart );
             detector.OnHold.AddListener( HandleHold );
             detector.OnEnd.AddListener( () => OnEnd?.Invoke() );

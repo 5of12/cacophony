@@ -1,23 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 using Cacophony;
 
 public class PassthroughActionTest
 {
     public MockDetectionSource mockSource;
+    public GameObject testObject;
+    public PassthroughAction testAction;
 
-    // A Test behaves as an ordinary method
-    [Test]
-    public void PassthroughActionTestSimplePasses()
+    [OneTimeSetUp]
+    public void OneTimeSetUp()
     {
-        GameObject testObject = new GameObject();
+        testObject = new GameObject();
         mockSource = testObject.AddComponent<MockDetectionSource>();
-        PassthroughAction testAction = ScriptableObject.CreateInstance<PassthroughAction>();
-        testAction.Initialise(mockSource);
+        mockSource.Init();
 
+        testAction = ScriptableObject.CreateInstance<PassthroughAction>();
+        testAction.Initialise(mockSource);
+    }
+
+    [TearDown]
+    public void AfterEach()
+    {
+        testAction.OnStart.RemoveAllListeners();    
+        testAction.OnHold.RemoveAllListeners();    
+        testAction.OnEnd.RemoveAllListeners();    
+        testAction.OnCancel.RemoveAllListeners();    
+        testAction.deadzoneDistance = 0.0f;
+
+    }
+
+    [Test]
+    public void ActionPassesThroughStartEvent()
+    {
         bool started = false;
         testAction.OnStart.AddListener ( () => {started = true;} );
         mockSource.OnStart.Invoke();
@@ -25,4 +40,69 @@ public class PassthroughActionTest
         Assert.IsTrue(started);
     }
 
+    [Test]
+    public void ActionPassesThroughEndEvent()
+    {
+        bool ended = false;
+        testAction.OnEnd.AddListener ( () => {ended = true;} );
+        mockSource.OnEnd.Invoke();
+        
+        Assert.IsTrue(ended);
+    }
+
+    [Test]
+    public void ActionPassesThroughCancelEvent()
+    {
+        bool cancelled = false;
+        testAction.OnCancel.AddListener ( () => {cancelled = true;} );
+        mockSource.OnCancel.Invoke();
+        
+        Assert.IsTrue(cancelled);
+    }
+
+    [Test]
+    public void HoldTriggersWithZeroMovementAndNoDeadzone()
+    {
+        bool holding = false;
+        Vector3 startPos = Vector3.one;
+        testAction.OnHold.AddListener ( () => {holding = true;} );
+
+        testAction.Evaluate(startPos);
+        mockSource.OnStart.Invoke();
+        testAction.Evaluate(startPos);
+        mockSource.OnHold.Invoke();
+        
+        Assert.IsTrue(holding);
+    }
+
+    [Test]
+    public void HoldTriggersWithSomeMovementAndNoDeadzone()
+    {
+        bool holding = false;
+        Vector3 startPos = Vector3.one;
+        testAction.OnHold.AddListener ( () => {holding = true;} );
+
+        testAction.Evaluate(startPos);
+        mockSource.OnStart.Invoke();
+        testAction.Evaluate(startPos + new Vector3(0.1f, 0.2f, 0.3f));
+        mockSource.OnHold.Invoke();
+        
+        Assert.IsTrue(holding);
+    }
+
+    [Test]
+    public void HoldDoesntTriggerWithNoMovementAndADeadzone()
+    {
+        bool holding = false;
+        Vector3 startPos = Vector3.one;
+        testAction.OnHold.AddListener ( () => {holding = true;} );
+        testAction.deadzoneDistance = 0.1f;
+
+        testAction.Evaluate(startPos);
+        mockSource.OnStart.Invoke();
+        testAction.Evaluate(startPos);
+        mockSource.OnHold.Invoke();
+        
+        Assert.IsFalse(holding);
+    }
 }

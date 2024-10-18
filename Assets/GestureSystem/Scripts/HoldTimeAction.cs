@@ -21,6 +21,7 @@ namespace Cacophony {
 
         public override void Initialise(IDetectionSource detector)
         {
+            base.Initialise();
             detector.OnStart.AddListener( HandleStart );
             detector.OnHold.AddListener( HandleHold );
             detector.OnEnd.AddListener( HandleEnd );

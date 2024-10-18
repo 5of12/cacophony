@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Cacophony;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,7 +13,14 @@ namespace Cacophony {
         [HideInInspector]
         public UnityEvent OnCancel;
 
-        public abstract void Initialise(IDetectionSource detector);
+        public virtual void Initialise(IDetectionSource detector = null)
+        {
+            OnStart = new();
+            OnHold = new();
+            OnEnd = new();
+            OnCancel = new();
+        }
+
         public abstract void Evaluate(Vector3 position);
         
     }
