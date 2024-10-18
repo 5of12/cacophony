@@ -15,10 +15,10 @@ namespace Cacophony {
 
         public virtual void Initialise(IDetectionSource detector = null)
         {
-            OnStart = new();
-            OnHold = new();
-            OnEnd = new();
-            OnCancel = new();
+            if (OnStart == null) OnStart = new();
+            if (OnHold == null) OnHold = new();
+            if (OnEnd == null) OnEnd = new();
+            if (OnCancel == null) OnCancel = new();
         }
 
         public abstract void Evaluate(Vector3 position);

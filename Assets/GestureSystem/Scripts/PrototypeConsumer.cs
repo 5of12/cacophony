@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PrototypeConsumer : MonoBehaviour
 {
-    public GestureManager manager;
+    public HandGestureManager manager;
 
     void OnEnable()
     {

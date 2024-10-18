@@ -408,8 +408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gestureDetector: {fileID: 459496929}
+  actionProcessor: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
   testHand: {fileID: 974584494}
-  actionProcessor: {fileID: 11400000, guid: a911d4a197a2e438a984a557a87b453d, type: 2}
 --- !u!4 &459496928
 Transform:
   m_ObjectHideFlags: 0

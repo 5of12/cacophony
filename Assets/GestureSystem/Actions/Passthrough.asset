@@ -24,4 +24,4 @@ MonoBehaviour:
   OnCancel:
     m_PersistentCalls:
       m_Calls: []
-  deadzoneDistance: 0
+  deadzoneDistance: 0.004
