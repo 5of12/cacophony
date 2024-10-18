@@ -1,14 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-
-public abstract class IGestureDetector<T> : MonoBehaviour
+namespace Cacophony
 {
-    public UnityEvent OnStart;
-    public UnityEvent OnHold;
-    public UnityEvent OnEnd;
-    public UnityEvent OnCancel;
-
-    public abstract void Evaluate(T input);
+    public abstract class IGestureDetector<T> : IDetectionSource
+    {
+        public abstract void Evaluate(T input);
+    }
 }
