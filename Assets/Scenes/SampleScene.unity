@@ -336,8 +336,8 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -358,8 +358,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.01
+  far clip plane: 20
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1079,11 +1079,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 770806475829919324, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
         type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 220
-      objectReference: {fileID: 0}
-    - target: {fileID: 770806475829919324, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
-        type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -1106,11 +1101,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 988744566837717731, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 988744566837717731, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
         type: 3}
@@ -1137,13 +1127,6 @@ PrefabInstance:
       propertyPath: leap
       value: 
       objectReference: {fileID: 529411721}
-    - target: {fileID: 2125531897673507841, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
-        type: 3}
-      propertyPath: m_text
-      value: 'OK Pinch
-
-        Passthrough'
-      objectReference: {fileID: 0}
     - target: {fileID: 3807180000479809937, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1194,26 +1177,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5451856111650076118, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
-        type: 3}
-      propertyPath: actionProcessor
-      value: 
-      objectReference: {fileID: 11400000, guid: a911d4a197a2e438a984a557a87b453d,
-        type: 2}
     - target: {fileID: 5602573295586849157, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
         type: 3}
       propertyPath: m_Name
       value: GestureManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8033747082912023173, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
-        type: 3}
-      propertyPath: m_text
-      value: Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8033747082912023173, guid: dcce8ebcf70cd479ba79ccbbd9a64c14,
-        type: 3}
-      propertyPath: m_fontSizeMin
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
