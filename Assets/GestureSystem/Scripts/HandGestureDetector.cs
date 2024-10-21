@@ -26,6 +26,16 @@ namespace Cacophony
             Initialise();
         }
 
+        public override void EnableDetector()
+        {
+            detectorOn = true;
+        }
+        public override void DisableDetector()
+        {
+            detectorOn = false;
+            reset = true;
+        }
+
         public void Initialise()
         {
             _confidenceBuffer = new ConfidenceBuffer(3);
