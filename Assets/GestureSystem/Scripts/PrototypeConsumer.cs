@@ -6,6 +6,12 @@ using UnityEngine;
 public class PrototypeConsumer : MonoBehaviour
 {
     public HandGestureManager manager;
+    public Color idleColor = Color.gray;
+    public Color holdingColor = Color.blue;
+    public Color successColor = Color.green;
+    public Color cancelledColor = Color.red;
+    private Material material;
+
 
     void OnEnable()
     {
@@ -13,6 +19,8 @@ public class PrototypeConsumer : MonoBehaviour
         manager.actionProcessor.OnHold.AddListener ( HandleHold );    
         manager.actionProcessor.OnEnd.AddListener ( HandleEnd );    
         manager.actionProcessor.OnCancel.AddListener ( HandleCancel );    
+        material = GetComponent<MeshRenderer>().material;
+        material.color = idleColor;
     }
 
     void OnDisable()
@@ -23,8 +31,26 @@ public class PrototypeConsumer : MonoBehaviour
         manager.actionProcessor.OnCancel.RemoveListener ( HandleCancel );    
     }
 
-    private void HandleStart() { Debug.Log("Action Start"); }
-    private void HandleHold() { Debug.Log("Action Hold"); }
-    private void HandleEnd() { Debug.Log("Action End"); }
-    private void HandleCancel() { Debug.Log("Action Cancel"); }
+    private void HandleStart() 
+    { 
+        Debug.Log("Action Start"); 
+        material.color = holdingColor;
+    }
+    
+    private void HandleHold() 
+    { 
+        // Debug.Log("Action Hold"); 
+        material.color = holdingColor;
+    }
+
+    private void HandleEnd() 
+    { 
+        Debug.Log("Action End"); 
+        material.color = successColor;
+    }
+    private void HandleCancel() 
+    { 
+        Debug.Log("Action Cancel"); 
+        material.color = cancelledColor;
+    }
 }

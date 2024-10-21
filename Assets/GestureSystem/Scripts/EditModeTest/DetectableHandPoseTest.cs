@@ -101,10 +101,10 @@ public class DetectableHandPoseTest
         SimpleHandPose poseA = Helper.CreateFistPose();
         SimpleHandPose poseB = Helper.CreateFistPose();
 
+        poseA.palmDirection = new Vector3(0, 0, 0);
         detectable.handPose = poseA;
         
         // When
-        poseB.palmDirection = new Vector3(0, 0, 0);
         float confidence = detectable.Evaluate(poseB);
         
         Assert.AreEqual(1f, confidence);
