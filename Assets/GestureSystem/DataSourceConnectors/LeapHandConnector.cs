@@ -8,7 +8,7 @@ using Cacophony;
 
 public class LeapHandConnector : MonoBehaviour
 {
-    #if UTLRALEAP
+    #if ULTRALEAP
     public LeapServiceProvider leap;
     public SimpleHandPose simplePose;
     public HandGestureManager manager;
