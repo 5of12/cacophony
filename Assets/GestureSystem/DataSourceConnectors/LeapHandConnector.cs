@@ -1,16 +1,13 @@
 
-using UnityEngine;
 #if ULTRALEAP
 using Leap;
 #endif
+
+using UnityEngine;
 using Cacophony;
 
 public class LeapHandConnector : MonoBehaviour
 {
-    #if !ULTRALEAP
-    [Header("IMPORT THE Ultraleap plugin to use")]
-    #endif
-
     #if UTLRALEAP
     public LeapServiceProvider leap;
     public SimpleHandPose simplePose;
@@ -79,3 +76,4 @@ public class LeapHandConnector : MonoBehaviour
     }
     #endif
 }
+
