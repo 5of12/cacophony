@@ -1,2 +1,2 @@
-# cacophony
+# Cacophony
 An extendable gesture library

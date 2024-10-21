@@ -5,7 +5,6 @@ namespace Cacophony
 
     public class HandGestureManager : IGestureManager<SimpleHandPose>
     {
-        public AnimatedTestHand testHand;
         public SimpleHandPose currentHandPose;
         public Vector3 currentPosition;
 
