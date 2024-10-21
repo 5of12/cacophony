@@ -23,9 +23,9 @@ namespace Cacophony
             }
             float fingerConfidence = 1 - (confidence / count);
 
-            float dirDif = input.palmDirection != Vector3.zero ? Vector3.Dot(input.palmDirection.normalized, handPose.palmDirection.normalized) : 1;
-            float normDif = input.palmDirection != Vector3.zero ? Vector3.Dot(input.palmNormal.normalized, handPose.palmNormal.normalized) : 1;
-            float palmConfidence = dirDif * normDif;
+            float dirDif = handPose.palmDirection != Vector3.zero ? Vector3.Dot(input.palmDirection.normalized, handPose.palmDirection.normalized) : 1;
+            float normDif = handPose.palmNormal != Vector3.zero ? Vector3.Dot(input.palmNormal.normalized, handPose.palmNormal.normalized) : 1;
+            float palmConfidence = dirDif * normDif > 0.5f ? 1 : 0;
 
             return fingerConfidence * palmConfidence;
         }

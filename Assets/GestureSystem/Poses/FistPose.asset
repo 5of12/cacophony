@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
-  m_Name: OKHandDown
+  m_Name: FistPose
   m_EditorClassIdentifier: 
   handPose:
     thumb:
-      curl: 0.103
-      bend: 0.086
-      splay: 0.707
+      curl: 0.12
+      bend: 0.168
+      splay: 0
     index:
-      curl: 0.586
-      bend: 0.207
-      splay: 0.245
+      curl: 1
+      bend: 0.462
+      splay: 0
     middle:
-      curl: 0.06
-      bend: 0
-      splay: 0.078
+      curl: 0.985
+      bend: 0.592
+      splay: 0
     ring:
-      curl: 0.043
-      bend: 0.164
-      splay: 0.078
+      curl: 1
+      bend: 0.652
+      splay: 0
     pinky:
-      curl: 0
-      bend: 0.198
-      splay: 0.655
-    palmDirection: {x: 0, y: 0, z: 0}
-    palmNormal: {x: 0, y: 0, z: 0}
+      curl: 1
+      bend: 1
+      splay: 0
+    palmDirection: {x: 0, y: 0, z: 1}
+    palmNormal: {x: 0, y: -1, z: 0}
