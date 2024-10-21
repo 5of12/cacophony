@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0b1c010d13024c11978af09838dda9d, type: 3}
-  m_Name: Passthrough
+  m_Name: PassthroughGrab
   m_EditorClassIdentifier: 
   OnStart:
     m_PersistentCalls:

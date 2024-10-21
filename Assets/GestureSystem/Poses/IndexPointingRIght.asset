@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
+  m_Name: IndexPointingRIght
+  m_EditorClassIdentifier: 
+  handPose:
+    thumb:
+      curl: 0.098
+      bend: 0.125
+      splay: 0.109
+    index:
+      curl: 0
+      bend: 0.022
+      splay: 0.027
+    middle:
+      curl: 0.88
+      bend: 0.424
+      splay: 0
+    ring:
+      curl: 0.895
+      bend: 0.457
+      splay: 0.141
+    pinky:
+      curl: 0.75
+      bend: 0.914
+      splay: 0.359
+    palmDirection: {x: 1, y: 0, z: 0.25}
+    palmNormal: {x: 0, y: -1, z: 0}

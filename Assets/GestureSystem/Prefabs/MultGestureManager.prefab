@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2762329674329310599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7996427890013632796}
+  - component: {fileID: 1744576707880702649}
+  - component: {fileID: 7665109545718478283}
+  m_Layer: 0
+  m_Name: MultGestureManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7996427890013632796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762329674329310599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1744576707880702649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762329674329310599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62e5755ddf9748a8acfdac77a19f7c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gestureActions:
+  - name: Horns Hold 1s
+    handGesture: {fileID: 11400000, guid: 777600f7e35a44c678ba1c2b205980d5, type: 2}
+    actionProcessor: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
+  - name: Point Forward Hold 1s
+    handGesture: {fileID: 11400000, guid: ec21053c07ccf43b1bcaf4cf28d00020, type: 2}
+    actionProcessor: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
+  - name: Point Left Hold 1s
+    handGesture: {fileID: 11400000, guid: 7fb343e16c520467ba1893f1827bce73, type: 2}
+    actionProcessor: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
+  - name: Point Right Hold 1s
+    handGesture: {fileID: 11400000, guid: 071cc3c0e278840ad8c9ff44185312b9, type: 2}
+    actionProcessor: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
+  - name: Pinch Slide Left
+    handGesture: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    actionProcessor: {fileID: 11400000, guid: 6470f73a7d14844fd9e4ad12f2c91156, type: 2}
+  - name: Pinch Slide Right
+    handGesture: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    actionProcessor: {fileID: 11400000, guid: 5e8b368fb57fa4790955c69b16fbd06e, type: 2}
+  - name: Grab Release
+    handGesture: {fileID: 11400000, guid: bedb7a962d70743ad9c029f3446978fe, type: 2}
+    actionProcessor: {fileID: 11400000, guid: a911d4a197a2e438a984a557a87b453d, type: 2}
+  - name: Peace Hold 1.5s
+    handGesture: {fileID: 11400000, guid: eed8f215f8c074876a79c88c47ed4fd7, type: 2}
+    actionProcessor: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
+  - name: Thumbs Up 1s
+    handGesture: {fileID: 11400000, guid: ae67ba71ad8334be195b7b5eae252f79, type: 2}
+    actionProcessor: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
+  - name: Thumbs Down 1s
+    handGesture: {fileID: 11400000, guid: 104bc9a47d7a84b818a4a5ae79a161e1, type: 2}
+    actionProcessor: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
+--- !u!114 &7665109545718478283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762329674329310599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff65e725e69644b7993dc69a4895d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leap: {fileID: 0}
+  simplePose:
+    thumb:
+      curl: 0
+      bend: 0
+      splay: 0
+    index:
+      curl: 0
+      bend: 0
+      splay: 0
+    middle:
+      curl: 0
+      bend: 0
+      splay: 0
+    ring:
+      curl: 0
+      bend: 0
+      splay: 0
+    pinky:
+      curl: 0
+      bend: 0
+      splay: 0
+    palmDirection: {x: 0, y: 0, z: 1}
+    palmNormal: {x: 0, y: -1, z: 0}
+  reciever: {fileID: 2762329674329310599}

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
+  m_Name: HornsAny
+  m_EditorClassIdentifier: 
+  handPose:
+    thumb:
+      curl: 0.080818474
+      bend: 0.101881504
+      splay: 0.20061086
+    index:
+      curl: 0.013615251
+      bend: 0.01638037
+      splay: 0.2043316
+    middle:
+      curl: 0.8829673
+      bend: 0.6474617
+      splay: 0.080179766
+    ring:
+      curl: 0.76903677
+      bend: 0.46036237
+      splay: 0.04585182
+    pinky:
+      curl: 0.03872794
+      bend: 0.06906021
+      splay: 0.5797427
+    palmDirection: {x: 0, y: 0, z: 0}
+    palmNormal: {x: 0, y: 0, z: 0}

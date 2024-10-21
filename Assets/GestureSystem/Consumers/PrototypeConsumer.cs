@@ -12,18 +12,28 @@ public class PrototypeConsumer : MonoBehaviour
     public Color holdingColor = Color.blue;
     public Color successColor = Color.green;
     public Color cancelledColor = Color.red;
+    public TMP_Text nametext;
     public TMP_Text statetext;
     private IEnumerator resetRoutine;
 
     void OnEnable()
     {
+        if (manager != null)
+        {
+            Initialise(gameObject.name);
+        }
+    }
+
+    public void Initialise(string name)
+    {
         manager.actionProcessor.OnStart.AddListener ( HandleStart );    
         manager.actionProcessor.OnHold.AddListener ( HandleHold );    
         manager.actionProcessor.OnEnd.AddListener ( HandleEnd );    
         manager.actionProcessor.OnCancel.AddListener ( HandleCancel );    
-
+        
+        nametext.text = name;
         statetext.color = idleColor;
-        resetRoutine = Reset();
+        resetRoutine = Reset(); 
     }
 
     void OnDisable()

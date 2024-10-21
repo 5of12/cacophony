@@ -11,9 +11,14 @@ public class LeapHandConnector : MonoBehaviour
     #if ULTRALEAP
     public LeapServiceProvider leap;
     public SimpleHandPose simplePose;
-    public HandGestureManager manager;
+    public GameObject reciever;
+
 
     private bool handFound;
+    void Start()
+    {
+        if (reciever == null) reciever = gameObject;
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,17 +29,18 @@ public class LeapHandConnector : MonoBehaviour
             if (!handFound)
             {
                 handFound = true;
-                manager.EnableGesture();
+                if (reciever != null) reciever.SendMessage("EnableGesture");
             }
             else
             {
                 simplePose = LeapHandToSimpleHand(hand);
-                manager.SetHandData(simplePose, hand.PalmPosition);
+                if (reciever != null) reciever.SendMessage("SetHandPose", simplePose);
+                if (reciever != null) reciever.SendMessage("SetHandPosition", hand.PalmPosition);
             }
         }
         else if (handFound)
         {
-            manager.DisableGesture();
+            if (reciever != null) reciever.SendMessage("DisableGesture");
             handFound = false;
         }
     }

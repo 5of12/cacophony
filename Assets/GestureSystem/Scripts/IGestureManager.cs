@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Cacophony 
 {
-
     public abstract class IGestureManager<T> : MonoBehaviour
     {
         public IGestureDetector<T> gestureDetector;
@@ -10,7 +9,10 @@ namespace Cacophony
 
         void Start()
         {
-            actionProcessor.Initialise(gestureDetector);
+            if(actionProcessor != null && gestureDetector != null)
+            {
+                actionProcessor.Initialise(gestureDetector);
+            }
         }
 
         public virtual void Evaluate(Vector3 pos, T data)

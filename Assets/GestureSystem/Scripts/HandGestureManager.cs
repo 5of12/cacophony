@@ -8,6 +8,11 @@ namespace Cacophony
         public SimpleHandPose currentHandPose;
         public Vector3 currentPosition;
 
+        void OnEnable()
+        {
+            currentHandPose = new();
+        }
+
         void Update()
         {
             Evaluate(currentPosition, currentHandPose);
@@ -21,6 +26,16 @@ namespace Cacophony
         public void DisableGesture()
         {
             gestureDetector.DisableDetector();
+        }
+
+        public void SetHandPose(SimpleHandPose pose)
+        {
+            currentHandPose = pose;
+        }
+
+        public void SetHandPosition(Vector3 position)
+        {
+            currentPosition = position;
         }
 
         public void SetHandData(SimpleHandPose pose, Vector3 position)

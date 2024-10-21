@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
+  m_Name: VSignAny
+  m_EditorClassIdentifier: 
+  handPose:
+    thumb:
+      curl: 0.14678657
+      bend: 0.056942523
+      splay: 0.011673512
+    index:
+      curl: 0.013954997
+      bend: 0.01989156
+      splay: 0.21785893
+    middle:
+      curl: 0.012474954
+      bend: 0.07360268
+      splay: 0.34615755
+    ring:
+      curl: 0.7584131
+      bend: 0.39633697
+      splay: 0.13272536
+    pinky:
+      curl: 0.7129977
+      bend: 0.4691217
+      splay: 0.1827524
+    palmDirection: {x: 0, y: 0, z: 0}
+    palmNormal: {x: 0, y: 0, z: 0}
