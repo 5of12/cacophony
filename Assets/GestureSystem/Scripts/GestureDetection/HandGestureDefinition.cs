@@ -8,9 +8,6 @@ public class HandGestureDefinition : IGestureDefinition<DetectableHandPose, Simp
 {
     [Range(0,1)]
     public float confidenceThreshold = 0.95f;
-
-    [Range(0,1)]
-    public float moveThresholdM = 0.02f;
     
     public override float Evaluate(SimpleHandPose input)
     {
