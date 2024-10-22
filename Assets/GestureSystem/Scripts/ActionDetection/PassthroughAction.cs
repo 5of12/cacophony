@@ -16,7 +16,7 @@ namespace Cacophony {
             base.Initialise();
             detector.OnStart.AddListener( HandleStart );
             detector.OnHold.AddListener( HandleHold );
-            detector.OnEnd.AddListener( () => OnEnd?.Invoke() );
+            detector.OnEnd.AddListener( () => OnEnd?.Invoke(new ActionEventArgs { position = currentPosition }) );
             detector.OnCancel.AddListener( () => OnCancel?.Invoke() );
         }
 
@@ -28,14 +28,14 @@ namespace Cacophony {
         private void HandleStart()
         {
             startPosition = currentPosition;
-            OnStart?.Invoke();
+            OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
         }
 
         private void HandleHold()
         {
             if (Vector3.Distance(currentPosition, startPosition) >= deadzoneDistance)
             {
-                OnHold?.Invoke();
+                OnHold?.Invoke(new ActionEventArgs { position = currentPosition });
             }
         }
     }

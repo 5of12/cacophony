@@ -40,7 +40,7 @@ namespace Cacophony {
         private void HandleStart()
         {
             startPosition = currentPosition;
-            OnStart?.Invoke();
+            OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
             detecting = true;
         }
 
@@ -54,12 +54,12 @@ namespace Cacophony {
 
                 if (sufficientlyMoved)
                 {
-                    OnEnd?.Invoke();
+                    OnEnd?.Invoke(new ActionEventArgs { position = currentPosition });
                     detecting = false;   
                 }
                 else
                 {
-                    OnHold?.Invoke();
+                    OnHold?.Invoke(new ActionEventArgs { position = currentPosition });
                 }
             }
         }

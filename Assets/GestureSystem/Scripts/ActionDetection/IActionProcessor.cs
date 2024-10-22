@@ -2,14 +2,19 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace Cacophony {
+    public struct ActionEventArgs
+    {
+        public Vector3 position;
+    }
+
     public abstract class IActionProcessor : ScriptableObject
     {
         [HideInInspector]
-        public UnityEvent OnStart;
+        public UnityEvent<ActionEventArgs> OnStart;
         [HideInInspector]
-        public UnityEvent OnHold;
+        public UnityEvent<ActionEventArgs> OnHold;
         [HideInInspector]
-        public UnityEvent OnEnd;
+        public UnityEvent<ActionEventArgs> OnEnd;
         [HideInInspector]
         public UnityEvent OnCancel;
 

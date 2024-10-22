@@ -44,7 +44,7 @@ public class PrototypeConsumer : MonoBehaviour
         manager.actionProcessor.OnCancel.RemoveListener ( HandleCancel );    
     }
 
-    private void HandleStart() 
+    private void HandleStart(ActionEventArgs pos) 
     { 
         // Debug.Log("Action Start"); 
         statetext.text = "Active";
@@ -52,14 +52,14 @@ public class PrototypeConsumer : MonoBehaviour
         StopCoroutine(resetRoutine);
     }
     
-    private void HandleHold() 
+    private void HandleHold(ActionEventArgs pos) 
     { 
         // Debug.Log("Action Hold"); 
         statetext.text = "Active";
         statetext.color = holdingColor;
     }
 
-    private void HandleEnd() 
+    private void HandleEnd(ActionEventArgs pos) 
     { 
         // Debug.Log("Action End"); 
         statetext.text = "Complete";

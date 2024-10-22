@@ -34,7 +34,7 @@ public class PassthroughActionTest
     public void ActionPassesThroughStartEvent()
     {
         bool started = false;
-        testAction.OnStart.AddListener ( () => {started = true;} );
+        testAction.OnStart.AddListener ( (ActionEventArgs pos) => {started = true;} );
         mockSource.OnStart.Invoke();
         
         Assert.IsTrue(started);
@@ -44,7 +44,7 @@ public class PassthroughActionTest
     public void ActionPassesThroughEndEvent()
     {
         bool ended = false;
-        testAction.OnEnd.AddListener ( () => {ended = true;} );
+        testAction.OnEnd.AddListener ( (ActionEventArgs pos) => {ended = true;} );
         mockSource.OnEnd.Invoke();
         
         Assert.IsTrue(ended);
@@ -65,7 +65,7 @@ public class PassthroughActionTest
     {
         bool holding = false;
         Vector3 startPos = Vector3.one;
-        testAction.OnHold.AddListener ( () => {holding = true;} );
+        testAction.OnHold.AddListener ( (ActionEventArgs pos) => {holding = true;} );
 
         testAction.Evaluate(startPos);
         mockSource.OnStart.Invoke();
@@ -80,7 +80,7 @@ public class PassthroughActionTest
     {
         bool holding = false;
         Vector3 startPos = Vector3.one;
-        testAction.OnHold.AddListener ( () => {holding = true;} );
+        testAction.OnHold.AddListener ( (ActionEventArgs pos) => {holding = true;} );
 
         testAction.Evaluate(startPos);
         mockSource.OnStart.Invoke();
@@ -95,7 +95,7 @@ public class PassthroughActionTest
     {
         bool holding = false;
         Vector3 startPos = Vector3.one;
-        testAction.OnHold.AddListener ( () => {holding = true;} );
+        testAction.OnHold.AddListener ( (ActionEventArgs pos) => {holding = true;} );
         testAction.deadzoneDistance = 0.1f;
 
         testAction.Evaluate(startPos);

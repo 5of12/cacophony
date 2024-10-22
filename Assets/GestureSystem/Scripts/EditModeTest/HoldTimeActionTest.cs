@@ -34,7 +34,7 @@ public class HoldTimeActionTest
     public void ActionPassesThroughStartEvent()
     {
         bool started = false;
-        testAction.OnStart.AddListener ( () => {started = true;} );
+        testAction.OnStart.AddListener ( (ActionEventArgs pos) => {started = true;} );
         mockSource.OnStart.Invoke();
         
         Assert.IsTrue(started);
@@ -58,7 +58,7 @@ public class HoldTimeActionTest
         bool ended = false;
         bool cancelled = false;
         testAction.OnCancel.AddListener ( () => {cancelled = true;} );
-        testAction.OnEnd.AddListener ( () => {ended = true;} );
+        testAction.OnEnd.AddListener ( (ActionEventArgs pos) => {ended = true;} );
         
         mockSource.OnCancel.Invoke();
         Assert.IsTrue(cancelled);
@@ -86,7 +86,7 @@ public class HoldTimeActionTest
         Vector3 startPos = Vector3.one;
 
         testAction.OnCancel.AddListener ( () => { cancelled = true; } );
-        testAction.OnHold.AddListener ( () => { holdCalls++; } );
+        testAction.OnHold.AddListener ( (ActionEventArgs pos) => { holdCalls++; } );
         testAction.maxDistanceM = 0.1f;
 
         testAction.Evaluate(startPos);

@@ -35,7 +35,7 @@ public class DirectionMoveActionTest
     public void ActionPassesThroughStartEvent()
     {
         bool started = false;
-        testAction.OnStart.AddListener ( () => {started = true;} );
+        testAction.OnStart.AddListener ( (ActionEventArgs pos) => {started = true;} );
         mockSource.OnStart.Invoke();
         
         Assert.IsTrue(started);
@@ -59,7 +59,7 @@ public class DirectionMoveActionTest
         bool ended = false;
         bool cancelled = false;
         testAction.OnCancel.AddListener ( () => {cancelled = true;} );
-        testAction.OnEnd.AddListener ( () => {ended = true;} );
+        testAction.OnEnd.AddListener ( (ActionEventArgs pos) => {ended = true;} );
         
         mockSource.OnCancel.Invoke();
         Assert.IsTrue(cancelled);
@@ -86,8 +86,8 @@ public class DirectionMoveActionTest
 
         Vector3 startPos = Vector3.zero;
 
-        testAction.OnEnd.AddListener ( () => { ended = true; } );
-        testAction.OnHold.AddListener ( () => { holdCalls++; } );
+        testAction.OnEnd.AddListener ( (ActionEventArgs pos) => { ended = true; } );
+        testAction.OnHold.AddListener ( (ActionEventArgs pos) => { holdCalls++; } );
         testAction.minDistanceM = 0.1f;
         testAction.moveDirection = Vector3.right;
         testAction.directionTolerence = 45;
@@ -116,8 +116,8 @@ public class DirectionMoveActionTest
 
         Vector3 startPos = Vector3.zero;
 
-        testAction.OnEnd.AddListener ( () => { ended = true; } );
-        testAction.OnHold.AddListener ( () => { holdCalls++; } );
+        testAction.OnEnd.AddListener ( (ActionEventArgs pos) => { ended = true; } );
+        testAction.OnHold.AddListener ( (ActionEventArgs pos) => { holdCalls++; } );
         testAction.minDistanceM = 0.3f;
         testAction.moveDirection = Vector3.right;
         testAction.directionTolerence = 45;
@@ -141,7 +141,7 @@ public class DirectionMoveActionTest
 
         Vector3 startPos = Vector3.zero;
 
-        testAction.OnEnd.AddListener ( () => { ended = true; } );
+        testAction.OnEnd.AddListener ( (ActionEventArgs pos) => { ended = true; } );
         testAction.minDistanceM = 0.1f;
         testAction.moveDirection = Vector3.right;
         testAction.directionTolerence = 45;
@@ -173,7 +173,7 @@ public class DirectionMoveActionTest
 
         Vector3 startPos = Vector3.zero;
 
-        testAction.OnEnd.AddListener ( () => { ended = true; } );
+        testAction.OnEnd.AddListener ( (ActionEventArgs pos) => { ended = true; } );
         testAction.minDistanceM = 0.1f;
         testAction.moveDirection = Vector3.right;
         testAction.directionTolerence = 30;
