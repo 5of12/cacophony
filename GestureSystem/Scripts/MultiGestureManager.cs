@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cacophony;
-using System;
 
 [System.Serializable]
 public struct GestureAction
@@ -42,7 +40,7 @@ public class MultiGestureManager : MonoBehaviour
             detector.handGesture = ga.handGesture;
             manager.gestureDetector = detector;
 
-            var ap = ScriptableObject.Instantiate(ga.actionProcessor);
+            var ap = Instantiate(ga.actionProcessor);
             manager.actionProcessor = ap;
             manager.actionProcessor.Initialise(manager.gestureDetector);
             manager.name = ga.name;

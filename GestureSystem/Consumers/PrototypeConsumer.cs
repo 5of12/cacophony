@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using Cacophony;
 using UnityEngine;
 using TMPro;
-using UnityEditor.PackageManager.Requests;
 
 public class PrototypeConsumer : MonoBehaviour
 {

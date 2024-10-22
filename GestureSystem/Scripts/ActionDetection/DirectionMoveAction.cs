@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Cacophony;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Cacophony {
     [CreateAssetMenu(menuName = "Cacophony/DirectionMoveAction", fileName = "Direction")]

@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Cacophony;
-using Leap;
 using UnityEngine;
 
 public class MultiGestureDebugDisplay : MonoBehaviour
