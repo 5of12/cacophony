@@ -33,5 +33,5 @@ MonoBehaviour:
       curl: 0.75
       bend: 0.914
       splay: 0.359
-    palmDirection: {x: 0, y: 0, z: 1}
+    palmDirection: {x: -0.1, y: 0, z: 1}
     palmNormal: {x: 0, y: -1, z: 0}

@@ -5,6 +5,7 @@ namespace Cacophony {
     public struct ActionEventArgs
     {
         public Vector3 position;
+        public float progress;
     }
 
     public abstract class IActionProcessor : ScriptableObject
