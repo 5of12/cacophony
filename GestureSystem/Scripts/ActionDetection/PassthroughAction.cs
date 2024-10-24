@@ -35,7 +35,7 @@ namespace Cacophony {
         {
             if (Vector3.Distance(currentPosition, startPosition) >= deadzoneDistance)
             {
-                OnHold?.Invoke(new ActionEventArgs { position = currentPosition });
+                OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = 0.5f });
             }
         }
     }

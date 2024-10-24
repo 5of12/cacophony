@@ -50,7 +50,8 @@ namespace Cacophony {
                     }
                     else
                     {
-                        OnHold?.Invoke(new ActionEventArgs { position = currentPosition });
+                        float time = Mathf.InverseLerp(startTime, startTime + holdTimeS, Time.time);
+                        OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = time });
                     }
                 }
                 else

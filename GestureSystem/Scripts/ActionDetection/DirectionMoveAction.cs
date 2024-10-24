@@ -45,8 +45,8 @@ namespace Cacophony {
             if (detecting)
             {
                 float angle = moveDirection.magnitude > 0 ? Vector3.Angle(moveDirection, currentPosition - startPosition) : 0;
-
-                bool sufficientlyMoved = Vector3.Distance(startPosition, currentPosition) >= minDistanceM && angle < directionTolerence;
+                float distanceMoved = angle < directionTolerence ? Vector3.Distance(startPosition, currentPosition) : 0;
+                bool sufficientlyMoved = distanceMoved >= minDistanceM;
 
                 if (sufficientlyMoved)
                 {
@@ -55,7 +55,7 @@ namespace Cacophony {
                 }
                 else
                 {
-                    OnHold?.Invoke(new ActionEventArgs { position = currentPosition });
+                    OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = distanceMoved / minDistanceM });
                 }
             }
         }
