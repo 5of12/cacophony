@@ -6,10 +6,12 @@ namespace Cacophony
     {
         public IGestureDetector<T> gestureDetector;
         public IActionProcessor actionProcessor;
+        [Tooltip("Initialise on start only if configuring from the inspector")]
+        public bool initOnStart = false;
 
         void Start()
         {
-            if(actionProcessor != null && gestureDetector != null)
+            if(initOnStart && actionProcessor != null && gestureDetector != null)
             {
                 actionProcessor.Initialise(gestureDetector);
             }
