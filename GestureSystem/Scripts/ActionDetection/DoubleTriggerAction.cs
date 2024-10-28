@@ -38,10 +38,9 @@ namespace Cacophony {
             {
                 // Trigger #1
                 _waitingForFirstTrigger = false;
-                return;
             }
 
-            if (deltaTriggerTime <= _maxTimeToConsiderDoubleTrigger && !_waitingForFirstTrigger)
+            else if (deltaTriggerTime <= _maxTimeToConsiderDoubleTrigger)
             {
                 // Trigger #2
                 OnEnd?.Invoke(new ActionEventArgs { position = currentPosition });
@@ -52,17 +51,16 @@ namespace Cacophony {
         
         private void HandleStart()
         {
-            OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
+            if (_waitingForFirstTrigger){
+                OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
+            }
+            
             detecting = true;
             OnStartTriggered();
         }
 
         private void HandleEnd()
         {
-            if (detecting)
-            {
-                OnCancel?.Invoke();
-            }
             detecting = false;
         }
     }
