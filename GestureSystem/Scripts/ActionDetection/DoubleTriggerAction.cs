@@ -9,6 +9,7 @@ namespace Cacophony {
         [Tooltip("If the user performs a successful Trigger within this time threshold, it will fire OnEnd.")]
         [Range(0, 2)]
         [SerializeField] private float _maxTimeToConsiderDoubleTrigger = 0.558f;
+        private float frameTolerance = 0.05f;
         private float _timeOfLastTrigger = -1000f;
         private bool _waitingForFirstTrigger = false;
         
@@ -49,6 +50,13 @@ namespace Cacophony {
         {
             if (_waitingForFirstTrigger){
                 OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
+            }
+            else {
+                float deltaTriggerTime = Time.time - _timeOfLastTrigger;
+                if (deltaTriggerTime > (_maxTimeToConsiderDoubleTrigger + frameTolerance)){
+                    _waitingForFirstTrigger = true;
+                    OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
+                }
             }
             OnStartTriggered();
         }
