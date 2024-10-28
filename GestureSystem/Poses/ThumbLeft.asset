@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
+  m_Name: ThumbLeft
+  m_EditorClassIdentifier: 
+  handPose:
+    thumb:
+      curl: 0.05245447
+      bend: 0.009220362
+      splay: 0.73915726
+    index:
+      curl: 1
+      bend: 0.43914813
+      splay: 0.10873774
+    middle:
+      curl: 1
+      bend: 0.58188593
+      splay: 0.035366807
+    ring:
+      curl: 1
+      bend: 0.58018446
+      splay: 0.008311692
+    pinky:
+      curl: 1
+      bend: 0.5135197
+      splay: 0.046952564
+    palmDirection: {x: 0, y: 0, z: 1}
+    palmNormal: {x: 0, y: 1, z: 0}
