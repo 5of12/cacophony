@@ -11,17 +11,13 @@ namespace Cacophony {
         [SerializeField] private float _maxTimeToConsiderDoubleTrigger = 0.558f;
         private float _timeOfLastTrigger = -1000f;
         private bool _waitingForFirstTrigger = false;
-        private bool detecting = false;
         
         public override void Initialise(IDetectionSource detector)
         {
             base.Initialise();
             detector.OnStart.AddListener( HandleStart );
-            
-            // There is no notion of 'Hold' for Double Trigger, it's two impulses...
-            //detector.OnHold.AddListener( HandleHold );
-            detector.OnEnd.AddListener( HandleEnd );
-            detector.OnCancel.AddListener( () => OnCancel?.Invoke() );
+            // NOTE: There is no notion of 'Hold/End/Cancel' for Double Trigger Action
+            // OnEnd is fired after the second trigger of OnStart
         }
         
         public override void Evaluate(Vector3 position)
@@ -45,7 +41,6 @@ namespace Cacophony {
                 // Trigger #2
                 OnEnd?.Invoke(new ActionEventArgs { position = currentPosition });
                 _waitingForFirstTrigger = true;
-                detecting = false;
             }
         }          
         
@@ -54,14 +49,7 @@ namespace Cacophony {
             if (_waitingForFirstTrigger){
                 OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
             }
-            
-            detecting = true;
             OnStartTriggered();
-        }
-
-        private void HandleEnd()
-        {
-            detecting = false;
         }
     }
 }
