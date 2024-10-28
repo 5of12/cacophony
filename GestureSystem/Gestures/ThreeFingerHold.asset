@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd8048594ff241a08ce199151a5f103, type: 3}
+  m_Name: ThreeFingerHold
+  m_EditorClassIdentifier: 
+  positivePoses:
+  - {fileID: 11400000, guid: c42b0c5a5c2d34f7eaf9629034bfd702, type: 2}
+  - {fileID: 11400000, guid: 51086772320b54da880158b6075bcf31, type: 2}
+  negativePoses:
+  - {fileID: 11400000, guid: f696d82f546494ddca1a895447b2085b, type: 2}
+  - {fileID: 11400000, guid: 50e7e6dd8fac54bdcbb8d9cc9ccbea22, type: 2}
+  - {fileID: 11400000, guid: f4075883e93d347a5a8c658628354018, type: 2}
+  - {fileID: 11400000, guid: 747a467baf0b3410ca1871fc01b82c69, type: 2}
+  - {fileID: 11400000, guid: bdf77c301762d41c6b382019b9959e26, type: 2}
+  confidenceThreshold: 0.016
