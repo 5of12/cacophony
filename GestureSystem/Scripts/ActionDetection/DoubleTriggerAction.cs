@@ -18,6 +18,7 @@ namespace Cacophony {
             detector.OnStart.AddListener( HandleStart );
             // NOTE: There is no notion of 'Hold/End/Cancel' for Double Trigger Action
             // OnEnd is fired after the second trigger of OnStart
+            detector.OnCancel.AddListener( () => OnCancel?.Invoke() );
         }
         
         public override void Evaluate(Vector3 position)
