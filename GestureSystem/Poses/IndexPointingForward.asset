@@ -20,7 +20,7 @@ MonoBehaviour:
     index:
       curl: 0
       bend: 0.022
-      splay: 0.027
+      splay: 0
     middle:
       curl: 0.88
       bend: 0.424

@@ -11,7 +11,7 @@ namespace Cacophony
         public float curl;
         [Range(0,1)]
         public float bend;
-        [Range(0,1)]
+        [Range(-1,1)]
         public float splay;
 
         public SimpleFinger ()
