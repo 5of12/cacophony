@@ -2,6 +2,8 @@ using System.Collections;
 using Cacophony;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 
 public class PrototypeConsumer : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class PrototypeConsumer : MonoBehaviour
     public Color cancelledColor = Color.red;
     public TMP_Text nametext;
     public TMP_Text statetext;
+    public Toggle enableToggle;
     private IEnumerator resetRoutine;
 
     void OnEnable()
@@ -31,7 +34,15 @@ public class PrototypeConsumer : MonoBehaviour
         
         nametext.text = name;
         statetext.color = idleColor;
+        enableToggle.onValueChanged.AddListener(HandleGestureToggled);
         resetRoutine = Reset(); 
+    }
+
+    private void HandleGestureToggled(bool isOn)
+    {
+        if (manager != null){
+            manager.enabled = isOn;
+        }
     }
 
     void OnDisable()
