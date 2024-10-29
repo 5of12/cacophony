@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd8048594ff241a08ce199151a5f103, type: 3}
+  m_Name: FlatHandDown
+  m_EditorClassIdentifier: 
+  positivePoses:
+  - {fileID: 11400000, guid: 1a6492e0ac0904721a0b092c84bb07d7, type: 2}
+  negativePoses:
+  - {fileID: 11400000, guid: cd1f52f6498634f72b925cba2b8adfee, type: 2}
+  - {fileID: 11400000, guid: 88137dd172a9c473c8181bfe876dcc2d, type: 2}
+  confidenceThreshold: 0.1
