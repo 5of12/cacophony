@@ -6,7 +6,8 @@ using Cacophony;
 public struct GestureAction
 {
     public string name;
-
+    [SerializeField]
+    public HandGestureDefinition readyGesture;
     [SerializeField]
     public HandGestureDefinition handGesture;
     [SerializeField]
@@ -37,6 +38,7 @@ public class MultiGestureManager : MonoBehaviour
             var manager = clone.AddComponent<HandGestureManager>();
             var detector = clone.AddComponent<HandGestureDetector>();
 
+            detector.readyGesture = ga.readyGesture;
             detector.handGesture = ga.handGesture;
             manager.gestureDetector = detector;
 

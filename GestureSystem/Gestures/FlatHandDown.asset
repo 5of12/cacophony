@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cd8048594ff241a08ce199151a5f103, type: 3}
-  m_Name: OKPinch
+  m_Name: FlatHandDown
   m_EditorClassIdentifier: 
   positivePoses:
-  - {fileID: 11400000, guid: 0d181ed9ef0fb4acf85c6ed8e2979fb0, type: 2}
-  - {fileID: 11400000, guid: 9dca5bc61492d4730b1eb24f8a039f21, type: 2}
+  - {fileID: 11400000, guid: 1a6492e0ac0904721a0b092c84bb07d7, type: 2}
   negativePoses:
-  - {fileID: 11400000, guid: aa5a5a216e09340499ecf24fefb4941c, type: 2}
-  - {fileID: 11400000, guid: f696d82f546494ddca1a895447b2085b, type: 2}
-  confidenceThreshold: 0.04
+  - {fileID: 11400000, guid: cd1f52f6498634f72b925cba2b8adfee, type: 2}
+  - {fileID: 11400000, guid: 88137dd172a9c473c8181bfe876dcc2d, type: 2}
+  confidenceThreshold: 0.1

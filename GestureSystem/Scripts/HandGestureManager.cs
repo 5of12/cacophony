@@ -43,6 +43,16 @@ namespace Cacophony
             currentHandPose = pose;
             currentPosition = position;
         }
+
+        public void SetGestureEnabled(bool isOn)
+        {
+            if (isOn){
+                EnableGesture();
+            }
+            else {
+                DisableGesture();
+            }
+        }
     }
 
 }

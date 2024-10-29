@@ -21,6 +21,7 @@ public class HandGestureDetectorTest
         gesture.negativePoses = new();
         gesture.confidenceThreshold = 0.95f;
         detector.handGesture = gesture;
+        detector.readyGesture = gesture;
     }
 
     [TearDown]
@@ -48,9 +49,18 @@ public class HandGestureDetectorTest
     }
 
     [Test]
-    public void DetectingStateMovesToHoldWhenConfidenceHigh()
+    public void DetectingStateMovesToReadyWhenConfidenceHigh()
     {
         detector.state = GestureState.DETECTING;
+
+        detector.ResolveState(1);
+        Assert.AreEqual(GestureState.READY, detector.state);
+    }
+
+        [Test]
+    public void ReadyStateMovesToHoldWhenConfidenceHigh()
+    {
+        detector.state = GestureState.READY;
 
         detector.ResolveState(1);
         Assert.AreEqual(GestureState.HOLD, detector.state);
@@ -100,7 +110,7 @@ public class HandGestureDetectorTest
     public void PerfectMatchingPoseTriggersHoldAsBufferFills()
     {
         detector.Initialise();
-        detector.state = GestureState.DETECTING;
+        detector.state = GestureState.READY;
         detector.detectorOn = true;
         SimpleHandPose fistPose = Helper.CreateFistPose();
         DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
@@ -108,7 +118,7 @@ public class HandGestureDetectorTest
         gesture.positivePoses.Add(detectable);
 
         detector.Evaluate(fistPose);
-        Assert.AreEqual(GestureState.DETECTING, detector.state);
+        Assert.AreEqual(GestureState.READY, detector.state);
         detector.Evaluate(fistPose);
         Assert.AreEqual(GestureState.HOLD, detector.state);
         detector.Evaluate(fistPose);
@@ -119,7 +129,7 @@ public class HandGestureDetectorTest
     public void PerfectMatchingPoseTriggersHoldImmediatelyWhenThresholdLow()
     {
         detector.Initialise();
-        detector.state = GestureState.DETECTING;
+        detector.state = GestureState.READY;
         detector.detectorOn = true;
         SimpleHandPose fistPose = Helper.CreateFistPose();
         DetectableHandPose detectable = ScriptableObject.CreateInstance<DetectableHandPose>();
