@@ -41,7 +41,7 @@ public class PrototypeConsumer : MonoBehaviour
     private void HandleGestureToggled(bool isOn)
     {
         if (manager != null){
-            manager.SetGestureEnabled(isOn);
+            manager.enabled = isOn;
         }
     }
 
