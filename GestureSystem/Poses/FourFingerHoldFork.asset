@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
+  m_Name: FourFingerHoldFork
+  m_EditorClassIdentifier: 
+  handPose:
+    thumb:
+      curl: 0.077598035
+      bend: 0.049262106
+      splay: 0.09822286
+    index:
+      curl: 0.00036603212
+      bend: 0.06585097
+      splay: 0.39891714
+    middle:
+      curl: 0.0020039082
+      bend: 0.09498078
+      splay: 0.07942847
+    ring:
+      curl: 0.00006479025
+      bend: 0.14530802
+      splay: 0.42553657
+    pinky:
+      curl: 0.008285761
+      bend: 0.24823529
+      splay: 0.7141941
+    palmDirection: {x: 0.028842203, y: -0.00036088418, z: 0.99958396}
+    palmNormal: {x: -0.17026253, y: -0.9853882, z: 0.0045570335}
