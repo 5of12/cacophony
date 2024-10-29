@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Cacophony
 {
-    public enum GestureState { IDLE, DETECTING, HOLD, RESET}
+    public enum GestureState { IDLE, DETECTING, READY, HOLD, RESET}
     
     public class HandGestureDetector : IGestureDetector<SimpleHandPose>
     {
@@ -68,13 +68,19 @@ namespace Cacophony
             switch (state)
             {
                 case GestureState.IDLE:
-                    if (detectorOn && currentConfidence > readyGesture.confidenceThreshold)
+                    if (detectorOn)
                     {
                         state = GestureState.DETECTING;
-                        SetGesture(handGesture);
                     }
                     break;
                 case GestureState.DETECTING:
+                    if (currentConfidence > readyGesture.confidenceThreshold)
+                    {
+                        SetGesture(handGesture);
+                        state = GestureState.READY;
+                    }
+                    break;
+                case GestureState.READY:
                     if (currentConfidence >= handGesture.confidenceThreshold)
                     {
                         OnStart?.Invoke();
@@ -85,7 +91,7 @@ namespace Cacophony
                     if (currentConfidence < handGesture.confidenceThreshold)
                     {
                         OnEnd?.Invoke();
-                        state = GestureState.IDLE;
+                        state = GestureState.DETECTING;
                         SetGesture(readyGesture);
                     }
                     else 
