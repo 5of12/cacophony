@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
+  m_Name: ThreeFingerHoldFork
+  m_EditorClassIdentifier: 
+  handPose:
+    thumb:
+      curl: 0.059431374
+      bend: 0.038550735
+      splay: 0.14910369
+    index:
+      curl: 0.010211647
+      bend: 0.004296601
+      splay: 0.24516042
+    middle:
+      curl: 0.0060355663
+      bend: 0.049984872
+      splay: 0.1378472
+    ring:
+      curl: 0.039906323
+      bend: 0.03458631
+      splay: 0.3740562
+    pinky:
+      curl: 0.3173598
+      bend: 0.2330327
+      splay: 0.0060592564
+    palmDirection: {x: 0, y: 0, z: 0}
+    palmNormal: {x: 0, y: 0, z: 0}
