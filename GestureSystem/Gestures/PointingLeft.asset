@@ -16,5 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 33746d85c019344dfb5de5eb0b1b4baa, type: 2}
   negativePoses:
   - {fileID: 11400000, guid: f696d82f546494ddca1a895447b2085b, type: 2}
-  confidenceThreshold: 0.1
-  moveThresholdM: 0.02
+  confidenceThreshold: 0.01
