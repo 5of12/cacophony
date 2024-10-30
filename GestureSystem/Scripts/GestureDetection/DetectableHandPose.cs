@@ -27,7 +27,7 @@ namespace Cacophony
             float normDif = handPose.palmNormal != Vector3.zero ? Vector3.Dot(input.palmNormal.normalized, handPose.palmNormal.normalized) : 1;
             float palmConfidence = dirDif * normDif > 0.5f ? 1 : 0;
 
-            return fingerConfidence * palmConfidence;
+            return Mathf.Clamp01(fingerConfidence * palmConfidence);
         }
 
         private float CorrelatePose(SimpleFinger a, SimpleFinger b)

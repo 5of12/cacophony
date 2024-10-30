@@ -21,4 +21,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 747a467baf0b3410ca1871fc01b82c69, type: 2}
   - {fileID: 11400000, guid: bdf77c301762d41c6b382019b9959e26, type: 2}
   - {fileID: 11400000, guid: c42b0c5a5c2d34f7eaf9629034bfd702, type: 2}
+  - {fileID: 11400000, guid: aa5a5a216e09340499ecf24fefb4941c, type: 2}
   confidenceThreshold: 0.016
