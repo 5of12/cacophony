@@ -88,7 +88,7 @@ namespace Cacophony
                     }
                     break;
                 case GestureState.HOLD:
-                    if (currentConfidence < handGesture.confidenceThreshold)
+                    if (currentConfidence < handGesture.confidenceThreshold * 0.8f)
                     {
                         OnEnd?.Invoke();
                         state = GestureState.DETECTING;
