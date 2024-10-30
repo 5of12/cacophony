@@ -70,7 +70,7 @@ public class LeapHandConnector : MonoBehaviour
         Vector3 localCarpalDir = Matrix4x4.Inverse(localMatrix) * finger.bones[1].Direction;
         target.bend = 1 - Vector3.Dot(finger.bones[0].Direction, finger.bones[1].Direction);
         target.curl = 1 - Vector3.Dot(finger.bones[1].Direction, finger.bones[2].Direction);
-        target.splay = localCarpalDir.x;
+        target.splay = localCarpalDir.x / 2;
     }
 
     public void PoseTargetThumb(Finger finger, SimpleFinger target, Matrix4x4 localMatrix)
@@ -78,7 +78,7 @@ public class LeapHandConnector : MonoBehaviour
         Vector3 localCarpalDir = Matrix4x4.Inverse(localMatrix) * finger.bones[1].Direction;
         target.bend = 1 - Vector3.Dot(finger.bones[1].Direction, finger.bones[2].Direction);
         target.curl = 1 - Vector3.Dot(finger.bones[2].Direction, finger.bones[3].Direction);
-        target.splay = localCarpalDir.x;
+        target.splay = localCarpalDir.x / 2;
     }
     #endif
 }
