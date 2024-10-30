@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
-  m_Name: ThumbRight
+  m_Name: IndexPointingAnyVarient
   m_EditorClassIdentifier: 
   handPose:
     thumb:
-      curl: 0.0089098215
-      bend: 0.000356853
-      splay: 0.8471523
+      curl: 0.09600985
+      bend: 0.03833568
+      splay: 0.09001869
     index:
-      curl: 0.8416796
-      bend: 0.6150198
-      splay: 0.17502536
+      curl: 0.027852297
+      bend: 0.0022705793
+      splay: 0.110080265
     middle:
-      curl: 0.86564755
-      bend: 0.8166843
-      splay: 0.06242259
+      curl: 0.8105734
+      bend: 0.5704144
+      splay: -0.04177594
     ring:
-      curl: 1
-      bend: 0.71639335
-      splay: 0.08366686
+      curl: 0.9215804
+      bend: 0.6116751
+      splay: 0.019414958
     pinky:
-      curl: 0.8757073
-      bend: 0.5907434
-      splay: 0.04789117
+      curl: 0.74661016
+      bend: 0.599977
+      splay: 0.06147162
     palmDirection: {x: 0, y: 0, z: 0}
-    palmNormal: {x: 0, y: -1, z: 0}
+    palmNormal: {x: 0, y: 0, z: 0}

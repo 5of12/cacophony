@@ -14,24 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handPose:
     thumb:
-      curl: 0.098
-      bend: 0.125
-      splay: 0.109
+      curl: 0.09352636
+      bend: 0.029079378
+      splay: 0.054807603
     index:
-      curl: 0
-      bend: 0.022
-      splay: 0.027
+      curl: 0.022539496
+      bend: 0.035925448
+      splay: 0.031657394
     middle:
-      curl: 0.88
-      bend: 0.424
-      splay: 0
+      curl: 0.8878899
+      bend: 0.5703503
+      splay: -0.023211922
     ring:
-      curl: 0.895
-      bend: 0.457
-      splay: 0.141
+      curl: 0.8570654
+      bend: 0.46351838
+      splay: 0.028306428
     pinky:
-      curl: 0.75
-      bend: 0.914
-      splay: 0.359
-    palmDirection: {x: -1, y: 0, z: 0.4}
-    palmNormal: {x: 0, y: -1, z: 0}
+      curl: 0.72834677
+      bend: 0.47726595
+      splay: 0.07496331
+    palmDirection: {x: -0.5, y: 0, z: 0.8}
+    palmNormal: {x: 0, y: 0, z: 0}

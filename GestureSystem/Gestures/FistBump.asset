@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positivePoses:
   - {fileID: 11400000, guid: aee1d3e1161444eb699d39071815e610, type: 2}
-  negativePoses: []
-  confidenceThreshold: 0.8
-  moveThresholdM: 0.02
+  negativePoses:
+  - {fileID: 11400000, guid: aa5a5a216e09340499ecf24fefb4941c, type: 2}
+  - {fileID: 11400000, guid: 9d8a4db135f44499e8a7c555e186e675, type: 2}
+  - {fileID: 11400000, guid: 9d561c31777e148e19167011420a2986, type: 2}
+  - {fileID: 11400000, guid: bdf77c301762d41c6b382019b9959e26, type: 2}
+  confidenceThreshold: 0.014

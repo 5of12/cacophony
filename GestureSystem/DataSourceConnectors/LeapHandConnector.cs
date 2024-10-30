@@ -53,7 +53,7 @@ public class LeapHandConnector : MonoBehaviour
             Quaternion.LookRotation(hand.Direction, -hand.PalmNormal),
             Vector3.one );
 
-        PoseTargetThumb(hand.Thumb, simpleHandPose.thumb, handMatrix);
+        PoseTargetThumb(hand.Thumb, hand.Index, simpleHandPose.thumb);
         PoseTargetFinger(hand.Index, simpleHandPose.index, handMatrix);
         PoseTargetFinger(hand.Middle, simpleHandPose.middle, handMatrix);
         PoseTargetFinger(hand.Ring, simpleHandPose.ring, handMatrix);
@@ -70,15 +70,14 @@ public class LeapHandConnector : MonoBehaviour
         Vector3 localCarpalDir = Matrix4x4.Inverse(localMatrix) * finger.bones[1].Direction;
         target.bend = 1 - Vector3.Dot(finger.bones[0].Direction, finger.bones[1].Direction);
         target.curl = 1 - Vector3.Dot(finger.bones[1].Direction, finger.bones[2].Direction);
-        target.splay = Mathf.Abs(localCarpalDir.x);
+        target.splay = localCarpalDir.x / 2;
     }
 
-    public void PoseTargetThumb(Finger finger, SimpleFinger target, Matrix4x4 localMatrix)
+    public void PoseTargetThumb(Finger thumb, Finger index, SimpleFinger target)
     {
-        Vector3 localCarpalDir = Matrix4x4.Inverse(localMatrix) * finger.bones[1].Direction;
-        target.bend = 1 - Vector3.Dot(finger.bones[1].Direction, finger.bones[2].Direction);
-        target.curl = 1 - Vector3.Dot(finger.bones[2].Direction, finger.bones[3].Direction);
-        target.splay = Mathf.Abs(localCarpalDir.x);
+        target.bend = 1 - Vector3.Dot(thumb.bones[1].Direction, thumb.bones[2].Direction);
+        target.curl = 1 - Vector3.Dot(thumb.bones[2].Direction, thumb.bones[3].Direction);
+        target.splay = 1 - Vector3.Dot(thumb.bones[1].Direction, index.bones[0].Direction);
     }
     #endif
 }

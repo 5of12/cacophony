@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cd8048594ff241a08ce199151a5f103, type: 3}
-  m_Name: PointingRight
+  m_Name: IndexPointing
   m_EditorClassIdentifier: 
   positivePoses:
-  - {fileID: 11400000, guid: e1fbccf0f4c654b07b1b73a8de30c4dc, type: 2}
+  - {fileID: 11400000, guid: 9d8a4db135f44499e8a7c555e186e675, type: 2}
+  - {fileID: 11400000, guid: 545272d2e13e34b1ba740b2c42074e8d, type: 2}
   negativePoses:
-  - {fileID: 11400000, guid: aee1d3e1161444eb699d39071815e610, type: 2}
-  - {fileID: 11400000, guid: f4075883e93d347a5a8c658628354018, type: 2}
-  - {fileID: 11400000, guid: 33746d85c019344dfb5de5eb0b1b4baa, type: 2}
   - {fileID: 11400000, guid: 0d181ed9ef0fb4acf85c6ed8e2979fb0, type: 2}
-  confidenceThreshold: 0.015
+  - {fileID: 11400000, guid: 747a467baf0b3410ca1871fc01b82c69, type: 2}
+  - {fileID: 11400000, guid: f696d82f546494ddca1a895447b2085b, type: 2}
+  confidenceThreshold: 0.05
