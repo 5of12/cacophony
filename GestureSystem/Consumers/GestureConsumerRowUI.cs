@@ -5,8 +5,9 @@ using TMPro;
 using UnityEngine.UI;
 
 
-public class PrototypeConsumer : MonoBehaviour
+public class GestureConsumerRowUI : MonoBehaviour
 {
+    public string gestureName;
     public HandGestureManager manager;
     public Color idleColor = Color.gray;
     public Color holdingColor = Color.blue;
@@ -14,7 +15,7 @@ public class PrototypeConsumer : MonoBehaviour
     public Color cancelledColor = Color.red;
     public TMP_Text nametext;
     public TMP_Text statetext;
-    public Toggle enableToggle;
+    public Toggle gestureEnableToggle;
     private IEnumerator resetRoutine;
 
     void OnEnable()
@@ -31,10 +32,10 @@ public class PrototypeConsumer : MonoBehaviour
         manager.actionProcessor.OnHold.AddListener ( HandleHold );    
         manager.actionProcessor.OnEnd.AddListener ( HandleEnd );    
         manager.actionProcessor.OnCancel.AddListener ( HandleCancel );    
-        
+        gestureName = name;
         nametext.text = name;
         statetext.color = idleColor;
-        enableToggle.onValueChanged.AddListener(HandleGestureToggled);
+        gestureEnableToggle.onValueChanged.AddListener(HandleGestureToggled);
         resetRoutine = Reset(); 
     }
 
