@@ -18,6 +18,8 @@ public class LeapHandConnector : MonoBehaviour
     public Chirality handChirality;
     [Tooltip("The time in seconds to retain the last hand when hand is lost")]
     public float lostHandPersistence = 0.25f;
+    public Collider interactionBounds;
+
     private Hand hand;
     private float timeLastSeen;
 
@@ -31,7 +33,7 @@ public class LeapHandConnector : MonoBehaviour
     void Update()
     {
         Hand newHand = leap.CurrentFrame.GetHand(handChirality);
-        if (newHand != null)
+        if (newHand != null && HandInInteractionBounds(newHand))
         {
             hand = newHand;
             timeLastSeen = Time.time;
@@ -52,6 +54,11 @@ public class LeapHandConnector : MonoBehaviour
             if (reciever != null) reciever.SendMessage("DisableGesture");
             handFound = false;
         }
+    }
+
+    public bool HandInInteractionBounds(Hand hand)
+    {
+        return interactionBounds == null ? true : interactionBounds.bounds.Contains(hand.PalmPosition);
     }
 
     public SimpleHandPose LeapHandToSimpleHand(Hand hand)
