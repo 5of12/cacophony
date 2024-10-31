@@ -15,7 +15,10 @@ MonoBehaviour:
   positivePoses:
   - {fileID: 11400000, guid: 0d181ed9ef0fb4acf85c6ed8e2979fb0, type: 2}
   - {fileID: 11400000, guid: 9dca5bc61492d4730b1eb24f8a039f21, type: 2}
+  - {fileID: 11400000, guid: 2a23f1de4de764aaeb9b15996da53f91, type: 2}
+  - {fileID: 11400000, guid: 5360d5c63b14d4da9a3feb74f4e92b3a, type: 2}
   negativePoses:
   - {fileID: 11400000, guid: aa5a5a216e09340499ecf24fefb4941c, type: 2}
   - {fileID: 11400000, guid: f696d82f546494ddca1a895447b2085b, type: 2}
+  - {fileID: 11400000, guid: a69cadedbfe894960a7b0c84e010a54a, type: 2}
   confidenceThreshold: 0.04
