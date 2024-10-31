@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
+  m_Name: ClosedPinchAny
+  m_EditorClassIdentifier: 
+  handPose:
+    thumb:
+      curl: 0.122021735
+      bend: 0.011689961
+      splay: 0.09757483
+    index:
+      curl: 0.5439636
+      bend: 0.146613
+      splay: 0.08811599
+    middle:
+      curl: 0.9237915
+      bend: 0.47400606
+      splay: 0.06370863
+    ring:
+      curl: 1.0016212
+      bend: 0.5939772
+      splay: 0.062034972
+    pinky:
+      curl: 0.7592975
+      bend: 0.5635494
+      splay: 0.07828856
+    palmDirection: {x: 0, y: 0, z: 0}
+    palmNormal: {x: 0, y: 0, z: 0}
