@@ -13,6 +13,13 @@ public class LeapHandConnector : MonoBehaviour
     public SimpleHandPose simplePose;
     public GameObject reciever;
 
+    [Header ("Hand Management")]
+    [Tooltip("Which hand to track and forward data for")]
+    public Chirality handChirality;
+    [Tooltip("The time in seconds to retain the last hand when hand is lost")]
+    public float lostHandPersistence = 0.25f;
+    private Hand hand;
+    private float timeLastSeen;
 
     private bool handFound;
     void Start()
@@ -23,9 +30,11 @@ public class LeapHandConnector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Hand hand = leap.CurrentFrame.GetHand(Chirality.Left);
-        if (hand != null)
+        Hand newHand = leap.CurrentFrame.GetHand(handChirality);
+        if (newHand != null)
         {
+            hand = newHand;
+            timeLastSeen = Time.time;
             if (!handFound)
             {
                 handFound = true;
@@ -38,7 +47,7 @@ public class LeapHandConnector : MonoBehaviour
                 if (reciever != null) reciever.SendMessage("SetHandPosition", hand.PalmPosition);
             }
         }
-        else if (handFound)
+        else if (handFound && Time.time - timeLastSeen > lostHandPersistence)
         {
             if (reciever != null) reciever.SendMessage("DisableGesture");
             handFound = false;
