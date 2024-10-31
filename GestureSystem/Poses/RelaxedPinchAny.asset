@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896ed64097234ba8bd6a6cabbb80971, type: 3}
+  m_Name: RelaxedPinchAny
+  m_EditorClassIdentifier: 
+  handPose:
+    thumb:
+      curl: 0.21421987
+      bend: 0.10967392
+      splay: 0.12763625
+    index:
+      curl: 0.40072674
+      bend: 0.11061019
+      splay: 0.13045771
+    middle:
+      curl: 0.41985577
+      bend: 0.06256521
+      splay: 0.028949557
+    ring:
+      curl: 0.3688665
+      bend: 0.081453204
+      splay: 0.050711986
+    pinky:
+      curl: 0.33435738
+      bend: 0.03066808
+      splay: -0.1569547
+    palmDirection: {x: 0, y: 0, z: 0}
+    palmNormal: {x: 0, y: 0, z: 0}
