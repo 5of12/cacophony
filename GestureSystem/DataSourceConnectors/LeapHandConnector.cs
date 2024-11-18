@@ -16,6 +16,7 @@ public class LeapHandConnector : MonoBehaviour
     [Header ("Hand Management")]
     [Tooltip("Which hand to track and forward data for")]
     public Chirality handChirality;
+
     [Tooltip("The time in seconds to retain the last hand when hand is lost")]
     public float lostHandPersistence = 0.25f;
     public Collider interactionBounds;
@@ -37,7 +38,8 @@ public class LeapHandConnector : MonoBehaviour
         {
             newHand = leap.CurrentFrame.GetHand(handChirality);
         }
-        else if (leap.CurrentFrame.Hands.Count == 1)
+        else if (leap.CurrentFrame.Hands.Count == 1 && 
+                 leap.CurrentFrame.Hands[0].GetChirality() == handChirality)
         {
             newHand = leap.CurrentFrame.Hands[0];
         }
