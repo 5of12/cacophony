@@ -32,7 +32,16 @@ public class LeapHandConnector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Hand newHand = leap.CurrentFrame.GetHand(handChirality);
+        Hand newHand = null;
+        if (leap.CurrentFrame.Hands.Count > 1)
+        {
+            newHand = leap.CurrentFrame.GetHand(handChirality);
+        }
+        else if (leap.CurrentFrame.Hands.Count == 1)
+        {
+            newHand = leap.CurrentFrame.Hands[0];
+        }
+
         if (newHand != null && HandInInteractionBounds(newHand))
         {
             hand = newHand;
