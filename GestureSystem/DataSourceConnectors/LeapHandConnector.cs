@@ -5,6 +5,7 @@ using Leap;
 
 using UnityEngine;
 using Cacophony;
+using UnityEngine.Events;
 
 public class LeapHandConnector : MonoBehaviour
 {
@@ -16,12 +17,15 @@ public class LeapHandConnector : MonoBehaviour
     [Header ("Hand Management")]
     [Tooltip("Which hand to track and forward data for")]
     public Chirality handChirality;
+
     [Tooltip("The time in seconds to retain the last hand when hand is lost")]
     public float lostHandPersistence = 0.25f;
     public Collider interactionBounds;
 
     private Hand hand;
     private float timeLastSeen;
+
+    public UnityEvent OnNoHandPresentAfterTimeout;
 
     private bool handFound;
     void Start()
@@ -52,6 +56,7 @@ public class LeapHandConnector : MonoBehaviour
         else if (handFound && Time.time - timeLastSeen > lostHandPersistence)
         {
             if (reciever != null) reciever.SendMessage("DisableGesture");
+            OnNoHandPresentAfterTimeout.Invoke();
             handFound = false;
         }
     }
