@@ -17,6 +17,7 @@ public class LeapHandConnector : MonoBehaviour
     [Header ("Hand Management")]
     [Tooltip("Which hand to track and forward data for")]
     public Chirality handChirality;
+    public bool allowAnyHand = true;
 
     [Tooltip("The time in seconds to retain the last hand when hand is lost")]
     public float lostHandPersistence = 0.25f;
@@ -36,7 +37,7 @@ public class LeapHandConnector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Hand newHand = leap.CurrentFrame.GetHand(handChirality);
+        Hand newHand = GetActiveHand();
         if (newHand != null && HandInInteractionBounds(newHand))
         {
             hand = newHand;
@@ -59,6 +60,31 @@ public class LeapHandConnector : MonoBehaviour
             OnNoHandPresentAfterTimeout.Invoke();
             handFound = false;
         }
+    }
+
+    public Hand GetActiveHand()
+    {
+        Hand hand = null;
+        if(allowAnyHand)
+        {
+            if (leap.CurrentFrame.Hands.Count > 1)
+            {
+                // Return the hand closest to object origin
+                float a = Vector3.Distance(leap.CurrentFrame.Hands[0].PalmPosition, transform.position);
+                float b = Vector3.Distance(leap.CurrentFrame.Hands[1].PalmPosition, transform.position);
+                hand = a < b ? leap.CurrentFrame.Hands[0] : leap.CurrentFrame.Hands[1];
+            }
+            else if (leap.CurrentFrame.Hands.Count > 0)
+            {
+                hand = leap.CurrentFrame.Hands[0];
+            }
+        }
+        else
+        {
+            hand = leap.CurrentFrame.GetHand(handChirality);
+        }
+        
+        return hand;
     }
 
     public bool HandInInteractionBounds(Hand hand)
