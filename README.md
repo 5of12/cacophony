@@ -56,7 +56,7 @@ The gesture manager will configure the gesture and action on start and triger up
 
 * Add the `LeapHandConnector` component to your game object with the `HandGesturemanager` attached.
 * Follow the instructions at: [github.com/ultraleap/UnityPlugin](https://github.com/ultraleap/UnityPlugin) to install the Ultraleap plugin
-* In `ProjectSettings/Player` add `ULTRALEAP` to the `Scripting Variables` list to enable the connector.
+* IMPORTANT: In `ProjectSettings/Player` add `ULTRALEAP` to the `Script Compilation > Scripting Define Symbols` section, to enable the connector.
 * Add a `LeapServiceProvider` to the scene and assign it to the `LeapHandConnector` parameter.
 
 The connector will now send hand data in the correct format to the `Gesture Manager`
