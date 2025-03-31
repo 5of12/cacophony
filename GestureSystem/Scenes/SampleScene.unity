@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -42,8 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -96,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -244,9 +241,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
   m_Range: 10
@@ -296,8 +292,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &410087041
 Transform:
   m_ObjectHideFlags: 0
@@ -610,6 +610,146 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[0].name
+      value: Grab Release
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[1].name
+      value: Peace Hold 1.5s
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[2].name
+      value: Point Forward Hold 1s
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[3].name
+      value: Pinch Slide Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[4].name
+      value: Pinch Slide Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[5].name
+      value: Double Tap
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[6].name
+      value: Thumbs Down 1s
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[7].name
+      value: Thumbs Down 1s
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[8].name
+      value: Thumbs Down 1s
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[0].handGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: bedb7a962d70743ad9c029f3446978fe, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[1].handGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: eed8f215f8c074876a79c88c47ed4fd7, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[2].handGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: ec21053c07ccf43b1bcaf4cf28d00020, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[3].handGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[4].handGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[5].handGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ed46233dd107483a8d555e3a476bdfc, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[6].handGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: 104bc9a47d7a84b818a4a5ae79a161e1, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[7].handGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: 104bc9a47d7a84b818a4a5ae79a161e1, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[8].handGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: 104bc9a47d7a84b818a4a5ae79a161e1, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[0].readyGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: 1bebd31a13702485093f13e39d0006ee, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[1].readyGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: f42ed047cf11842c0abe602d12caa079, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[2].readyGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d0bcc4906f5b4281a6d6c676b731131, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[3].readyGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[4].readyGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[5].readyGesture
+      value: 
+      objectReference: {fileID: 11400000, guid: f42ed047cf11842c0abe602d12caa079, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[6].readyGesture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[7].readyGesture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[8].readyGesture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[0].actionProcessor
+      value: 
+      objectReference: {fileID: 11400000, guid: a911d4a197a2e438a984a557a87b453d, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[1].actionProcessor
+      value: 
+      objectReference: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[2].actionProcessor
+      value: 
+      objectReference: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[3].actionProcessor
+      value: 
+      objectReference: {fileID: 11400000, guid: 6470f73a7d14844fd9e4ad12f2c91156, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[4].actionProcessor
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e8b368fb57fa4790955c69b16fbd06e, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[5].actionProcessor
+      value: 
+      objectReference: {fileID: 11400000, guid: 1aa421adb5bea45f0b7c816850f5151d, type: 2}
+    - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
+      propertyPath: gestureActions.Array.data[6].actionProcessor
+      value: 
+      objectReference: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
     - target: {fileID: 2762329674329310599, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
       propertyPath: m_Name
       value: MultGestureManager
