@@ -661,7 +661,7 @@ PrefabInstance:
     - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
       propertyPath: gestureActions.Array.data[2].handGesture
       value: 
-      objectReference: {fileID: 11400000, guid: ec21053c07ccf43b1bcaf4cf28d00020, type: 2}
+      objectReference: {fileID: 11400000, guid: 7d0bcc4906f5b4281a6d6c676b731131, type: 2}
     - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
       propertyPath: gestureActions.Array.data[3].handGesture
       value: 
@@ -697,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
       propertyPath: gestureActions.Array.data[2].readyGesture
       value: 
-      objectReference: {fileID: 11400000, guid: 7d0bcc4906f5b4281a6d6c676b731131, type: 2}
+      objectReference: {fileID: 11400000, guid: f42ed047cf11842c0abe602d12caa079, type: 2}
     - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
       propertyPath: gestureActions.Array.data[3].readyGesture
       value: 
@@ -733,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
       propertyPath: gestureActions.Array.data[2].actionProcessor
       value: 
-      objectReference: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
+      objectReference: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
     - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
       propertyPath: gestureActions.Array.data[3].actionProcessor
       value: 
