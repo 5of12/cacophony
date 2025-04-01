@@ -22,7 +22,6 @@ public class HandGestureDefinition : IGestureDefinition<DetectableHandPose, Simp
             negatives = Mathf.Max(negatives, pose.Evaluate(input));
         }
         
-        // return Mathf.Clamp01(positives - (negatives * negativeInfluence));
         return positives > negatives ? positives : -negatives;
     }
 }
