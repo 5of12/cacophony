@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positivePoses: []
   negativePoses: []
-  confidenceThreshold: 0.95
+  confidenceThreshold: 0.8
