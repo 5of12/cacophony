@@ -4,9 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Cacophony/HandGesture", fileName = "Gesture")]
 public class HandGestureDefinition : IGestureDefinition<DetectableHandPose, SimpleHandPose>
 {
+    [Tooltip("The confidence score required to count the gesture as detected. Use a lower value to accept a wider range of poses.")]
     [Range(0,1)]
     public float confidenceThreshold = 0.95f;
-    
+
     public override float Evaluate(SimpleHandPose input)
     {
         float positives = 0;
@@ -20,7 +21,8 @@ public class HandGestureDefinition : IGestureDefinition<DetectableHandPose, Simp
         {
             negatives = Mathf.Max(negatives, pose.Evaluate(input));
         }
-
-        return Mathf.Clamp01(positives - negatives);
+        
+        // return Mathf.Clamp01(positives - (negatives * negativeInfluence));
+        return positives > negatives ? positives : -negatives;
     }
 }
