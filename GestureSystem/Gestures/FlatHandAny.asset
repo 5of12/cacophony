@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd8048594ff241a08ce199151a5f103, type: 3}
   m_Name: FlatHandAny
   m_EditorClassIdentifier: 
-  positivePoses: []
+  positivePoses:
+  - {fileID: 11400000, guid: aa5a5a216e09340499ecf24fefb4941c, type: 2}
   negativePoses: []
-  confidenceThreshold: 0.95
+  confidenceThreshold: 0.8
