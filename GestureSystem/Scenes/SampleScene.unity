@@ -689,7 +689,7 @@ PrefabInstance:
     - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
       propertyPath: gestureActions.Array.data[0].readyGesture
       value: 
-      objectReference: {fileID: 11400000, guid: 1bebd31a13702485093f13e39d0006ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 65e799135e9bb4eb39bd20ee18b8f7c1, type: 2}
     - target: {fileID: 1744576707880702649, guid: ef0419805a0bd44f586daf9a8afa4ecc, type: 3}
       propertyPath: gestureActions.Array.data[1].readyGesture
       value: 

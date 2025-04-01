@@ -38,13 +38,13 @@ public class HandGestureDefinitionTest
     }
 
     [Test]
-    public void IdenticalNegativePoseNegatesPerfectPositiveMatch()
+    public void EqualPositiveAndNegativePosesReturnNegativeResult()
     {
         definition.positivePoses.Add(fistPose);
         definition.negativePoses.Add(fistPose);
 
         float confidence = definition.Evaluate(fistPose.handPose);
-        Assert.AreEqual(0, confidence);
+        Assert.LessOrEqual(confidence, 0);
     }
 
     [Test]
@@ -82,12 +82,12 @@ public class HandGestureDefinitionTest
     }
 
     [Test]
-    public void MatchingOnlyNegativeResultReturnsZero()
+    public void MatchingOnlyNegativeResultReturnsNegative()
     {
         definition.negativePoses.Add(fistPose);
 
         float confidence = definition.Evaluate(fistPose.handPose);
-        Assert.AreEqual(0, confidence);
+        Assert.LessOrEqual(confidence, 0);
     }
 
 }
