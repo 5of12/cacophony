@@ -46,36 +46,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gestureActions:
-  - name: Horns Hold 1s
-    handGesture: {fileID: 11400000, guid: 777600f7e35a44c678ba1c2b205980d5, type: 2}
-    actionProcessor: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
-  - name: Point Forward Hold 1s
-    handGesture: {fileID: 11400000, guid: ec21053c07ccf43b1bcaf4cf28d00020, type: 2}
-    actionProcessor: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
-  - name: Point Left Hold 1s
-    handGesture: {fileID: 11400000, guid: 7fb343e16c520467ba1893f1827bce73, type: 2}
-    actionProcessor: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
-  - name: Point Right Hold 1s
-    handGesture: {fileID: 11400000, guid: 071cc3c0e278840ad8c9ff44185312b9, type: 2}
-    actionProcessor: {fileID: 11400000, guid: 191dd462daa5d463686236a7d4d28164, type: 2}
-  - name: Pinch Slide Left
-    handGesture: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
-    actionProcessor: {fileID: 11400000, guid: 6470f73a7d14844fd9e4ad12f2c91156, type: 2}
-  - name: Pinch Slide Right
-    handGesture: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
-    actionProcessor: {fileID: 11400000, guid: 5e8b368fb57fa4790955c69b16fbd06e, type: 2}
   - name: Grab Release
+    readyGesture: {fileID: 11400000, guid: 1bebd31a13702485093f13e39d0006ee, type: 2}
     handGesture: {fileID: 11400000, guid: bedb7a962d70743ad9c029f3446978fe, type: 2}
     actionProcessor: {fileID: 11400000, guid: a911d4a197a2e438a984a557a87b453d, type: 2}
   - name: Peace Hold 1.5s
+    readyGesture: {fileID: 11400000, guid: f42ed047cf11842c0abe602d12caa079, type: 2}
     handGesture: {fileID: 11400000, guid: eed8f215f8c074876a79c88c47ed4fd7, type: 2}
     actionProcessor: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
-  - name: Thumbs Up 1s
-    handGesture: {fileID: 11400000, guid: ae67ba71ad8334be195b7b5eae252f79, type: 2}
+  - name: Point Forward Hold 1s
+    readyGesture: {fileID: 11400000, guid: f42ed047cf11842c0abe602d12caa079, type: 2}
+    handGesture: {fileID: 11400000, guid: 7d0bcc4906f5b4281a6d6c676b731131, type: 2}
     actionProcessor: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
-  - name: Thumbs Down 1s
-    handGesture: {fileID: 11400000, guid: 104bc9a47d7a84b818a4a5ae79a161e1, type: 2}
-    actionProcessor: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
+  - name: Pinch Slide Left
+    readyGesture: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    handGesture: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    actionProcessor: {fileID: 11400000, guid: 6470f73a7d14844fd9e4ad12f2c91156, type: 2}
+  - name: Pinch Slide Right
+    readyGesture: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    handGesture: {fileID: 11400000, guid: ae91d55970ceb4af3bb8a2d78edb99fd, type: 2}
+    actionProcessor: {fileID: 11400000, guid: 5e8b368fb57fa4790955c69b16fbd06e, type: 2}
+  - name: Double Tap
+    readyGesture: {fileID: 11400000, guid: f42ed047cf11842c0abe602d12caa079, type: 2}
+    handGesture: {fileID: 11400000, guid: 0ed46233dd107483a8d555e3a476bdfc, type: 2}
+    actionProcessor: {fileID: 11400000, guid: 1aa421adb5bea45f0b7c816850f5151d, type: 2}
 --- !u!114 &7665109545718478283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,3 +107,10 @@ MonoBehaviour:
     palmDirection: {x: 0, y: 0, z: 1}
     palmNormal: {x: 0, y: -1, z: 0}
   reciever: {fileID: 2762329674329310599}
+  handChirality: 0
+  allowAnyHand: 1
+  lostHandPersistence: 0.25
+  interactionBounds: {fileID: 0}
+  OnNoHandPresentAfterTimeout:
+    m_PersistentCalls:
+      m_Calls: []
