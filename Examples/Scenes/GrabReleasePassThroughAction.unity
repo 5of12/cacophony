@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 507543248}
   - component: {fileID: 507543249}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: ConfettiAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1439,7 +1439,7 @@ GameObject:
   - component: {fileID: 2024719087}
   - component: {fileID: 2024719086}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: ConfettiParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,8 +1673,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 8
-      minScalar: 4
+      scalar: 6
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1791,8 +1791,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.0175
-      minScalar: 0.005
+      scalar: 0.00875
+      minScalar: 0.0025
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2115,7 +2115,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.05
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2995,7 +2995,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -3528,9 +3528,9 @@ ParticleSystem:
         m_RotationOrder: 4
     speedModifier:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
+      minMaxState: 3
+      scalar: 5
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
