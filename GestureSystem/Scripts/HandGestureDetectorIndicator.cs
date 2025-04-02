@@ -1,17 +1,24 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Cacophony
 {
-    public class HandGestureDetectorStateIndicator : MonoBehaviour
+    public class HandGestureDetectorIndicator : MonoBehaviour
     {
         public HandGestureDetector gestureDetector;
-        public Text stateText;
-        public Color idleColor = Color.grey;
-        public Color detectingColor = Color.magenta;
-        public Color readyColor = Color.green;
-        public Color holdColor = Color.cyan;
-        public Color cancelColor = Color.red;
+        public GameObject stateRow;
+        public Transform rowParent;
+        public Dictionary<GestureState, Color> stateColors =
+            new Dictionary<GestureState, Color>() {
+        {GestureState.IDLE,  new Color32(166, 141, 212, 255)},
+        {GestureState.DETECTING, new Color32(139, 197, 232, 255)},
+        {GestureState.READY, new Color32(156, 220, 203, 255)},
+        {GestureState.HOLD, new Color32(248, 243, 160, 255)},
+        {GestureState.RESET, new Color32(232, 177, 183, 255)}
+        };
+        private List<HandGestureDetectorRowUI> gestureRows = new();
+        public GestureState activeState;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -26,35 +33,36 @@ namespace Cacophony
                     Debug.LogError("Unable to get HandGestureDetector for: " + name);
                 }
             }
+            SetupUI();
         }
 
-        private void SetIndicatorFromGestureDetector()
+        private void SetupUI()
         {
-            stateText.text = gestureDetector.state.ToString();
-            switch (gestureDetector.state)
+            foreach (GestureState state in Enum.GetValues(typeof(GestureState)))
             {
-                case GestureState.IDLE:
-                    stateText.color = idleColor;
-                    break;
-                case GestureState.DETECTING:
-                    stateText.color = detectingColor;
-                    break;
-                case GestureState.READY:
-                    stateText.color = readyColor;
-                    break;
-                case GestureState.HOLD:
-                    stateText.color = holdColor;
-                    break;
-                case GestureState.RESET:
-                    stateText.color = cancelColor;
-                    break;
+                var newRow = Instantiate(stateRow, rowParent);
+                HandGestureDetectorRowUI rowUI = newRow.GetComponent<HandGestureDetectorRowUI>();
+                rowUI.stateText.text = state.ToString();
+                rowUI.stateBarImage.color = stateColors[state];
+                rowUI.state = state;
+                gestureRows.Add(rowUI);
+                rowUI.ResetFill();
+            }
+        }
+
+        private void UpdateIndicatorFromGestureDetector()
+        {
+            activeState = gestureDetector.state;
+            foreach (HandGestureDetectorRowUI row in gestureRows)
+            {
+                row.SetCompletion(activeState == row.state ? 1f : 0.1f);
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-            SetIndicatorFromGestureDetector();
+            UpdateIndicatorFromGestureDetector();
         }
     }
 }
