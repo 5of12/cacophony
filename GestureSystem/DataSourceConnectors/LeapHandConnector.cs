@@ -29,6 +29,17 @@ public class LeapHandConnector : MonoBehaviour
     public UnityEvent OnNoHandPresentAfterTimeout;
 
     private bool handFound;
+
+    private void Awake()
+    {
+#if ULTRALEAP
+        // Check that we have a LeapService Provider available...
+        leap = FindFirstObjectByType<LeapServiceProvider>();
+        if (leap == null) {
+            Debug.LogError("Unable to obtain a LeapService Provider! Check one exists in the scene.");
+        }
+#endif
+    }
     void Start()
     {
         if (reciever == null) reciever = gameObject;
