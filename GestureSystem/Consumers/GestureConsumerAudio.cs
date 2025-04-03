@@ -2,19 +2,20 @@ using UnityEngine;
 
 namespace Cacophony
 {
-[RequireComponent(typeof(Animator))]
-public class GestureConsumerAnimator : MonoBehaviour
+[RequireComponent(typeof(AudioSource))]
+public class GestureConsumerAudio : MonoBehaviour
 {
     public HandGestureManager manager;
-    public Animator animator;
+    public AudioSource audioSource;
 
     public float debounceTimer = 0.1f;
+    public float pitchShiftRange = 0.25f;
 
-    [Header("AnimationStates")]
-    public string start = "Start";
-    public string hold = "Hold";
-    public string end = "End";
-    public string cancel = "Cancel";
+    [Header("Audio Clips")]
+    public AudioClip start;
+    public AudioClip hold;
+    public AudioClip end;
+    public AudioClip cancel;
 
     private bool started = false;
     private float endTime = 0f;
@@ -30,9 +31,9 @@ public class GestureConsumerAnimator : MonoBehaviour
             }
         }
 
-        if (animator == null)
+        if (audioSource == null)
         {
-            animator = GetComponent<Animator>();
+            audioSource = GetComponent<AudioSource>();
         }
     }
 
@@ -64,38 +65,41 @@ public class GestureConsumerAnimator : MonoBehaviour
     {
         if (!started && Time.time - endTime > debounceTimer)
         {
-            animator.SetTrigger(start);
+            if (start != null) audioSource.PlayOneShot(start);
             started = true;
         }
-        animator.ResetTrigger(end);
-        animator.ResetTrigger(cancel);
-        animator.SetFloat(hold, 0);
     }
 
     protected void HandleHold(ActionEventArgs eventData)
     {
         if (started)
         {
-            animator.SetFloat(hold, eventData.progress);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(hold);
+            }
+            audioSource.pitch = 1 + (eventData.progress * pitchShiftRange);
         }
     }
 
     protected void HandleEnd(ActionEventArgs eventData)
     {
-        animator.SetTrigger(end);
+        audioSource.pitch = 1;
+        if (end != null) audioSource.PlayOneShot(end);
+
         started = false;
         endTime = Time.time;
-
-        animator.ResetTrigger(start);
     }
 
     protected void HandleCancel()
     {
-        animator.SetTrigger(cancel);
+        audioSource.pitch = 1;
+        if (cancel != null) audioSource.PlayOneShot(cancel);
+
         started = false;
         endTime = Time.time;
-        animator.ResetTrigger(start);
     }
 
 }
 }
+
