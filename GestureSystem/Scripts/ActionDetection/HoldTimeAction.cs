@@ -21,7 +21,7 @@ namespace Cacophony {
             detector.OnStart.AddListener( HandleStart );
             detector.OnHold.AddListener( HandleHold );
             detector.OnEnd.AddListener( HandleEnd );
-            detector.OnCancel.AddListener( () => OnCancel?.Invoke() );
+            detector.OnCancel.AddListener( () => OnCancel?.Invoke(new ActionEventArgs { eventType = ActionEventType.CANCEL } ));
         }
         
         public override void Evaluate(Vector3 position)
@@ -33,7 +33,7 @@ namespace Cacophony {
         {
             startPosition = currentPosition;
             startTime = Time.time;
-            OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
+            OnStart?.Invoke(new ActionEventArgs { progress = 0, position = currentPosition, eventType = ActionEventType.START });
             detecting = true;
         }
 
@@ -45,18 +45,18 @@ namespace Cacophony {
                 {
                     if (Time.time - startTime > holdTimeS)
                     {
-                        OnEnd?.Invoke(new ActionEventArgs { position = currentPosition });
+                        OnEnd?.Invoke(new ActionEventArgs { position = currentPosition, eventType = ActionEventType.COMPLETE });
                         detecting = false;
                     }
                     else
                     {
                         float time = Mathf.InverseLerp(startTime, startTime + holdTimeS, Time.time);
-                        OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = time });
+                        OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = time, eventType = ActionEventType.INPROGRESS });
                     }
                 }
                 else
                 {
-                    OnCancel?.Invoke();
+                    OnCancel?.Invoke(new ActionEventArgs { progress = 0, eventType = ActionEventType.CANCEL });
                     detecting = false;
                 }
             }
@@ -66,7 +66,7 @@ namespace Cacophony {
         {
             if (detecting)
             {
-                OnCancel?.Invoke();
+                OnCancel?.Invoke(new ActionEventArgs { progress = 0, eventType = ActionEventType.CANCEL });
             }
             detecting = false;
         }

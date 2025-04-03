@@ -44,23 +44,23 @@ namespace Cacophony
             manager.actionProcessor.OnCancel.RemoveListener(HandleCancel);
         }
 
-        protected virtual void HandleStart(ActionEventArgs pos)
+        protected virtual void HandleStart(ActionEventArgs arg)
         {
             //StopCoroutine(resetRoutine);
             throw new NotImplementedException("IGestureConsumer must create a HandleStart method!");
         }
 
-        protected virtual void HandleHold(ActionEventArgs pos)
+        protected virtual void HandleHold(ActionEventArgs arg)
         {
             throw new NotImplementedException("IGestureConsumer must create a HandleHold method!");
         }
 
-        protected virtual void HandleEnd(ActionEventArgs pos)
+        protected virtual void HandleEnd(ActionEventArgs arg)
         {
             throw new NotImplementedException("IGestureConsumer must create a HandleEnd method!");
         }
 
-        protected virtual void HandleCancel()
+        protected virtual void HandleCancel(ActionEventArgs arg)
         {
             throw new NotImplementedException("IGestureConsumer must create a HandleCancel method!");
         }

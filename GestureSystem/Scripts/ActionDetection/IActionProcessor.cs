@@ -2,8 +2,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace Cacophony {
+
+    public enum ActionEventType { START, INPROGRESS, COMPLETE, CANCEL };
     public struct ActionEventArgs
     {
+        public ActionEventType eventType;
         public Vector3 position;
         public float progress;
     }
@@ -17,7 +20,7 @@ namespace Cacophony {
         [HideInInspector]
         public UnityEvent<ActionEventArgs> OnEnd;
         [HideInInspector]
-        public UnityEvent OnCancel;
+        public UnityEvent<ActionEventArgs> OnCancel;
 
         public virtual void Initialise(IDetectionSource detector = null)
         {

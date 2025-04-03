@@ -56,7 +56,7 @@ namespace Cacophony
             animator.ResetTrigger(start);
         }
 
-        protected override void HandleCancel()
+        protected override void HandleCancel(ActionEventArgs eventData)
         {
             animator.SetTrigger(cancel);
             started = false;

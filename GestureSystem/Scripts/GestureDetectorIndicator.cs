@@ -17,7 +17,7 @@ namespace Cacophony
         {GestureState.HOLD, new Color32(248, 243, 160, 255)},
         {GestureState.RESET, new Color32(232, 177, 183, 255)}
         };
-        private List<HandGestureDetectorRowUI> gestureRows = new();
+        private List<GestureStateDebugRowUI> gestureRows = new();
         public GestureState activeState;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,7 +41,7 @@ namespace Cacophony
             foreach (GestureState state in Enum.GetValues(typeof(GestureState)))
             {
                 var newRow = Instantiate(stateRow, rowParent);
-                HandGestureDetectorRowUI rowUI = newRow.GetComponent<HandGestureDetectorRowUI>();
+                GestureStateDebugRowUI rowUI = newRow.GetComponent<GestureStateDebugRowUI>();
                 rowUI.stateText.text = state.ToString();
                 rowUI.stateBarImage.color = stateColors[state];
                 rowUI.state = state;
@@ -53,7 +53,7 @@ namespace Cacophony
         private void UpdateIndicatorFromGestureDetector()
         {
             activeState = gestureDetector.state;
-            foreach (HandGestureDetectorRowUI row in gestureRows)
+            foreach (GestureStateDebugRowUI row in gestureRows)
             {
                 row.SetCompletion(activeState == row.state ? 1f : 0.1f);
             }

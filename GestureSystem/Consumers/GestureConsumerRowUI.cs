@@ -55,23 +55,20 @@ public class GestureConsumerRowUI : MonoBehaviour
     }
 
     private void HandleStart(ActionEventArgs pos) 
-    { 
-        // Debug.Log("Action Start"); 
+    {
         statetext.text = "Active";
         statetext.color = holdingColor;
         StopCoroutine(resetRoutine);
     }
     
     private void HandleHold(ActionEventArgs pos) 
-    { 
-        // Debug.Log("Action Hold"); 
+    {
         statetext.text = "Active";
         statetext.color = holdingColor;
     }
 
     private void HandleEnd(ActionEventArgs pos) 
-    { 
-        // Debug.Log("Action End"); 
+    {
         statetext.text = "Complete";
         statetext.color = successColor;
 
@@ -79,9 +76,8 @@ public class GestureConsumerRowUI : MonoBehaviour
         resetRoutine = Reset();
         StartCoroutine(resetRoutine);
     }
-    private void HandleCancel() 
-    { 
-        // Debug.Log("Action Cancel"); 
+    private void HandleCancel(ActionEventArgs pos) 
+    {
         statetext.text = "Cancel";
         statetext.color = cancelledColor;
         

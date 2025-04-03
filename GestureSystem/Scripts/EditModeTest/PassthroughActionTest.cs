@@ -54,7 +54,7 @@ public class PassthroughActionTest
     public void ActionPassesThroughCancelEvent()
     {
         bool cancelled = false;
-        testAction.OnCancel.AddListener ( () => {cancelled = true;} );
+        testAction.OnCancel.AddListener ( (ActionEventArgs pos) => {cancelled = true;} );
         mockSource.OnCancel.Invoke();
         
         Assert.IsTrue(cancelled);

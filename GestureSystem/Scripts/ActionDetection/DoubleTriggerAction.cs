@@ -19,7 +19,7 @@ namespace Cacophony {
             detector.OnStart.AddListener( HandleStart );
             // NOTE: There is no notion of 'Hold/End/Cancel' for Double Trigger Action
             // OnEnd is fired after the second trigger of OnStart
-            detector.OnCancel.AddListener( () => OnCancel?.Invoke() );
+            detector.OnCancel.AddListener( () => OnCancel?.Invoke(new ActionEventArgs { progress = 0, eventType = ActionEventType.CANCEL }) );
         }
         
         public override void Evaluate(Vector3 position)
@@ -40,7 +40,7 @@ namespace Cacophony {
             else if (deltaTriggerTime <= _maxTimeToConsiderDoubleTrigger)
             {
                 // Trigger #2
-                OnEnd?.Invoke(new ActionEventArgs { position = currentPosition });
+                OnEnd?.Invoke(new ActionEventArgs { position = currentPosition, eventType = ActionEventType.COMPLETE });
                 _waitingForFirstTrigger = true;
             }
         }          
@@ -48,12 +48,12 @@ namespace Cacophony {
         private void HandleStart()
         {
             if (_waitingForFirstTrigger){
-                OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
+                OnStart?.Invoke(new ActionEventArgs { position = currentPosition, eventType = ActionEventType.START });
             }
             else if (Time.time - _timeOfLastTrigger > (_maxTimeToConsiderDoubleTrigger + frameTolerance))
             {
                 _waitingForFirstTrigger = true;
-                OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
+                OnStart?.Invoke(new ActionEventArgs { position = currentPosition, eventType = ActionEventType.START });
             }
             OnStartTriggered();
         }

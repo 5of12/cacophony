@@ -56,7 +56,7 @@ namespace Cacophony
             endTime = Time.time;
         }
 
-        protected override void HandleCancel()
+        protected override void HandleCancel(ActionEventArgs pos)
         {
             audioSource.pitch = 1;
             if (cancel != null) audioSource.PlayOneShot(cancel);

@@ -17,7 +17,7 @@ namespace Cacophony {
             detector.OnStart.AddListener( HandleStart );
             detector.OnHold.AddListener( HandleHold );
             detector.OnEnd.AddListener( () => OnEnd?.Invoke(new ActionEventArgs { position = currentPosition }) );
-            detector.OnCancel.AddListener( () => OnCancel?.Invoke() );
+            detector.OnCancel.AddListener( () => OnCancel?.Invoke(new ActionEventArgs { eventType = ActionEventType.CANCEL }));
         }
 
         public override void Evaluate(Vector3 position)
