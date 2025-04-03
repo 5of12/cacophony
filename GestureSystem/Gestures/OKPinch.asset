@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positivePoses:
   - {fileID: 11400000, guid: 0d181ed9ef0fb4acf85c6ed8e2979fb0, type: 2}
-  - {fileID: 11400000, guid: 9dca5bc61492d4730b1eb24f8a039f21, type: 2}
-  - {fileID: 11400000, guid: 2a23f1de4de764aaeb9b15996da53f91, type: 2}
-  - {fileID: 11400000, guid: 5360d5c63b14d4da9a3feb74f4e92b3a, type: 2}
   - {fileID: 11400000, guid: bd30e338cbfbb4839afd3318b45aff8a, type: 2}
   negativePoses:
   - {fileID: 11400000, guid: aa5a5a216e09340499ecf24fefb4941c, type: 2}
