@@ -708,7 +708,7 @@ PrefabInstance:
     - target: {fileID: 1129876774283683341, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
       propertyPath: handGesture
       value: 
-      objectReference: {fileID: 11400000, guid: bedb7a962d70743ad9c029f3446978fe, type: 2}
+      objectReference: {fileID: 11400000, guid: eed8f215f8c074876a79c88c47ed4fd7, type: 2}
     - target: {fileID: 1129876774283683341, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
       propertyPath: readyGesture
       value: 
@@ -760,7 +760,7 @@ PrefabInstance:
     - target: {fileID: 5451856111650076118, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
       propertyPath: actionProcessor
       value: 
-      objectReference: {fileID: 11400000, guid: a911d4a197a2e438a984a557a87b453d, type: 2}
+      objectReference: {fileID: 11400000, guid: c4537aa5aa0cd4c3bae5e54983fa4e29, type: 2}
     - target: {fileID: 5602573295586849157, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
       propertyPath: m_Name
       value: GestureManager
@@ -779,17 +779,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d69b6f3ef47454984a276a7a1cb12f62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &606057576 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5451856111650076118, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
-  m_PrefabInstance: {fileID: 606057574}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540cae33a0a5b46a6b8eb4224c7347fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &791329554
@@ -878,8 +867,148 @@ Transform:
   m_Children:
   - {fileID: 2024719085}
   - {fileID: 507543248}
+  - {fileID: 929023482}
   m_Father: {fileID: 1989925259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &929023481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929023482}
+  - component: {fileID: 929023483}
+  m_Layer: 0
+  m_Name: Trail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &929023482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929023481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 791329558}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!96 &929023483
+TrailRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929023481}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Time: 0.3
+  m_PreviewTimeScale: 1
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.108695984
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 0.5062708, b: 0.4198113, a: 1}
+      key1: {r: 1, g: 0.7650633, b: 0.3726415, a: 1}
+      key2: {r: 0.8896101, g: 1, b: 0.3915094, a: 0}
+      key3: {r: 0.3820755, g: 1, b: 0.76252323, a: 0}
+      key4: {r: 0.43867922, g: 0.66100633, b: 1, a: 0}
+      key5: {r: 0, g: 0.3960271, b: 1, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 12518
+      ctime1: 25169
+      ctime2: 39444
+      ctime3: 53392
+      ctime4: 65535
+      ctime5: 65535
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 1
+      m_ColorSpace: 0
+      m_NumColorKeys: 5
+      m_NumAlphaKeys: 2
+    numCornerVertices: 10
+    numCapVertices: 10
+    alignment: 0
+    textureMode: 0
+    textureScale: {x: 1, y: 1}
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_MinVertexDistance: 0.001
+  m_MaskInteraction: 0
+  m_Autodestruct: 0
+  m_Emitting: 1
+  m_ApplyActiveColorSpace: 1
 --- !u!1 &1094378789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da5e4ddff63f43c8b4ee4a6cbaa31e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 606057576}
+  manager: {fileID: 2121983518}
   OnGestureStart:
     m_PersistentCalls:
       m_Calls:
@@ -1022,13 +1151,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 507543249}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
+      - m_Target: {fileID: 929023483}
+        m_TargetAssemblyTypeName: UnityEngine.TrailRenderer, UnityEngine
+        m_MethodName: set_emitting
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: b972030eb323349068bb18fff5ee6706, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1036,7 +1165,19 @@ MonoBehaviour:
         m_CallState: 2
   OnGestureHoldWithProgress:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 929023483}
+        m_TargetAssemblyTypeName: UnityEngine.TrailRenderer, UnityEngine
+        m_MethodName: set_widthMultiplier
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnGestureHoldWithPosition:
     m_PersistentCalls:
       m_Calls:
@@ -1055,18 +1196,6 @@ MonoBehaviour:
   OnGestureEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2024719087}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Emit
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1000
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 507543249}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: PlayOneShot
@@ -1079,9 +1208,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2024719087}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Emit
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnGestureCancel:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 929023483}
+        m_TargetAssemblyTypeName: UnityEngine.TrailRenderer, UnityEngine
+        m_MethodName: set_emitting
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1673990313
 Transform:
   m_ObjectHideFlags: 0
@@ -6047,6 +6200,17 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2121983518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5451856111650076118, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
+  m_PrefabInstance: {fileID: 606057574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540cae33a0a5b46a6b8eb4224c7347fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6850628972294830996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6055,6 +6219,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 302267532772199470, guid: 5a035548394324d2b8f4ef0d59a26836, type: 3}
+      propertyPath: m_text
+      value: 'Make a PEACE pose with two fingers
+
+        and Hold for 1.5 seconds!'
+      objectReference: {fileID: 0}
     - target: {fileID: 1136256000226145671, guid: 5a035548394324d2b8f4ef0d59a26836, type: 3}
       propertyPath: gestureDetector
       value: 
