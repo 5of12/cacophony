@@ -74,7 +74,7 @@ public class GestureConsumerAudio : MonoBehaviour
     {
         if (started)
         {
-            if (!audioSource.isPlaying)
+            if (!audioSource.isPlaying && hold != null)
             {
                 audioSource.PlayOneShot(hold);
             }
