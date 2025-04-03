@@ -4,9 +4,8 @@ using UnityEngine.Events;
 
 namespace Cacophony
 {
-    public class GestureConsumer : MonoBehaviour
+    public class GestureConsumerUnityEvents : IGestureConsumer
     {
-        public HandGestureManager manager;
         private IEnumerator resetRoutine;
 
         [Header("Events")]
@@ -16,69 +15,34 @@ namespace Cacophony
         public UnityEvent OnGestureEnd;
         public UnityEvent OnGestureCancel;
 
-        private void Awake()
+        protected override void Initialise()
         {
-            if (manager == null)
-            {
-                manager = FindFirstObjectByType<HandGestureManager>();
-                if (manager == null)
-                {
-                    Debug.LogError("Could not find HandGestureManager for GestureConsumer: " + name);
-                }
-            }
-        }
-
-        void OnEnable()
-        {
-            if (manager != null)
-            {
-                Initialise();
-            }
-        }
-
-        public void Initialise()
-        {
-            manager.actionProcessor.OnStart.AddListener(HandleStart);
-            manager.actionProcessor.OnHold.AddListener(HandleHold);
-            manager.actionProcessor.OnEnd.AddListener(HandleEnd);
-            manager.actionProcessor.OnCancel.AddListener(HandleCancel); 
+            base.Initialise();
             resetRoutine = Reset();
         }
 
-        void OnDisable()
+        protected override void HandleStart(ActionEventArgs pos)
         {
-            manager.actionProcessor.OnStart.RemoveListener(HandleStart);
-            manager.actionProcessor.OnHold.RemoveListener(HandleHold);
-            manager.actionProcessor.OnEnd.RemoveListener(HandleEnd);
-            manager.actionProcessor.OnCancel.RemoveListener(HandleCancel);
-        }
-
-        protected virtual void HandleStart(ActionEventArgs pos)
-        {
-            //Debug.Log("HandleStart");
             OnGestureStart.Invoke();
             StopCoroutine(resetRoutine);
         }
 
-        protected virtual void HandleHold(ActionEventArgs pos)
+        protected override void HandleHold(ActionEventArgs pos)
         {
-            //Debug.Log("HandleHold:" + pos.progress + );
             OnGestureHoldWithProgress.Invoke(pos.progress);
             OnGestureHoldWithPosition.Invoke(pos.position);
         }
 
-        protected virtual void HandleEnd(ActionEventArgs pos)
+        protected override void HandleEnd(ActionEventArgs pos)
         {
-            //Debug.Log("HandleEnd");
             OnGestureEnd.Invoke(); 
             StopCoroutine(resetRoutine);
             resetRoutine = Reset();
             StartCoroutine(resetRoutine);
         }
 
-        protected virtual void HandleCancel()
+        protected override void HandleCancel()
         {
-            //Debug.Log("HandleCancel");
             OnGestureCancel.Invoke();
             StopCoroutine(resetRoutine);
             resetRoutine = Reset();
