@@ -11,6 +11,7 @@ namespace Cacophony {
         [SerializeField] private float _maxTimeToConsiderDoubleTrigger = 0.558f;
         private float frameTolerance = 0.05f;
         private float _timeOfLastTrigger = -1000f;
+        private float secondTriggerTimer;
         private bool _waitingForFirstTrigger;
         public bool WaitingForFirstTrigger
         {
@@ -31,6 +32,14 @@ namespace Cacophony {
         public override void Evaluate(Vector3 position)
         {
             currentPosition = position;
+            secondTriggerTimer += Time.deltaTime;
+            if (!WaitingForFirstTrigger && (secondTriggerTimer > _maxTimeToConsiderDoubleTrigger))
+            {
+                //Debug.Log("Exceeded Re-trigger time...RESET");
+                secondTriggerTimer = 0;
+                WaitingForFirstTrigger = true;
+                OnCancel?.Invoke();
+            }
         }
 
         private void OnStartTriggered()
@@ -43,6 +52,7 @@ namespace Cacophony {
                 // Trigger #1
                 WaitingForFirstTrigger = false;
                 OnHold?.Invoke(new ActionEventArgs { progress = 0.5f });
+                secondTriggerTimer = 0;
             }
             else if (deltaTriggerTime <= _maxTimeToConsiderDoubleTrigger)
             {
