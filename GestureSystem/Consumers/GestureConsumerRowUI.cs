@@ -76,7 +76,7 @@ public class GestureConsumerRowUI : MonoBehaviour
         resetRoutine = Reset();
         StartCoroutine(resetRoutine);
     }
-    private void HandleCancel(ActionEventArgs pos) 
+    private void HandleCancel() 
     {
         statetext.text = "Cancel";
         statetext.color = cancelledColor;

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Cacophony
 {
+    public enum ActionEventType { START, HOLD, PROGRESS, COMPLETE, CANCEL };
     public class GestureEventDebugRowUI : MonoBehaviour
     {
         public ActionEventType eventType;

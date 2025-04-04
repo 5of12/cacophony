@@ -11,7 +11,8 @@ namespace Cacophony
         private Dictionary<ActionEventType, Color> stateColors =
             new Dictionary<ActionEventType, Color>() {
         {ActionEventType.START,  new Color32(166, 141, 212, 255)},
-        {ActionEventType.INPROGRESS, new Color32(248, 243, 160, 255) },
+        {ActionEventType.HOLD, new Color32(139, 197, 232, 255)},
+        {ActionEventType.PROGRESS, new Color32(248, 243, 160, 255)},
         {ActionEventType.COMPLETE, new Color32(156, 220, 203, 255)},
         {ActionEventType.CANCEL, new Color32(232, 177, 183, 255)}
         };
@@ -38,17 +39,17 @@ namespace Cacophony
             }
         }
 
-        private void UpdateIndicatorForActionEvent(ActionEventArgs arg)
+        private void UpdateIndicatorForActionEvent(ActionEventType eventType, float progress)
         {
             foreach (GestureEventDebugRowUI row in eventRows)
             {
                 // Special case progress, to get the progress value...
-                if (row.eventType == ActionEventType.INPROGRESS)
+                if (row.eventType == ActionEventType.PROGRESS)
                 {
-                    row.SetCompletion(arg.progress > 0.1 ? arg.progress : 0.1f, false);
+                    row.SetCompletion(progress > 0.1 ? progress : 0.1f, false);
                 }
                 else{
-                    row.SetCompletion(arg.eventType == row.eventType ? 1f : 0.1f);
+                    row.SetCompletion(eventType == row.eventType ? 1f : 0.1f);
                 }
             }
         }
@@ -56,22 +57,23 @@ namespace Cacophony
         protected override void HandleStart(ActionEventArgs arg)
         {
             //StopCoroutine(resetRoutine);
-            UpdateIndicatorForActionEvent(arg);
+            UpdateIndicatorForActionEvent(ActionEventType.START, arg.progress);
         }
 
         protected override void HandleHold(ActionEventArgs arg)
         {
-            UpdateIndicatorForActionEvent(arg);
+            UpdateIndicatorForActionEvent(ActionEventType.HOLD, arg.progress);
         }
 
         protected override void HandleEnd(ActionEventArgs arg)
         {
-            UpdateIndicatorForActionEvent(arg);
+            UpdateIndicatorForActionEvent(ActionEventType.COMPLETE, arg.progress);
         }
 
-        protected override void HandleCancel(ActionEventArgs arg)
+        protected override void HandleCancel()
         {
-            UpdateIndicatorForActionEvent(arg);
+            // Cancel doesn't carry ActionEventArgs, so create a dummy one...
+            UpdateIndicatorForActionEvent(ActionEventType.CANCEL, 0f);
         }
     }
 }

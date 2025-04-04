@@ -45,7 +45,7 @@ public class DirectionMoveActionTest
     public void GestureEndEventAfterStartCancelsDetection()
     {
         bool ended = false;
-        testAction.OnCancel.AddListener ( (ActionEventArgs pos) => {ended = true;} );
+        testAction.OnCancel.AddListener ( () => {ended = true;} );
 
         mockSource.OnStart.Invoke();
         mockSource.OnEnd.Invoke();
@@ -58,7 +58,7 @@ public class DirectionMoveActionTest
     {
         bool ended = false;
         bool cancelled = false;
-        testAction.OnCancel.AddListener ( (ActionEventArgs pos) => {cancelled = true;} );
+        testAction.OnCancel.AddListener ( () => {cancelled = true;} );
         testAction.OnEnd.AddListener ( (ActionEventArgs pos) => {ended = true;} );
         
         mockSource.OnCancel.Invoke();
@@ -72,7 +72,7 @@ public class DirectionMoveActionTest
     public void ActionPassesThroughCancelEvent()
     {
         bool cancelled = false;
-        testAction.OnCancel.AddListener ( (ActionEventArgs pos) => {cancelled = true;} );
+        testAction.OnCancel.AddListener ( () => {cancelled = true;} );
         mockSource.OnCancel.Invoke();
         
         Assert.IsTrue(cancelled);

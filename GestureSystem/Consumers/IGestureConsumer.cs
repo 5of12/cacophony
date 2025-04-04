@@ -60,7 +60,7 @@ namespace Cacophony
             throw new NotImplementedException("IGestureConsumer must create a HandleEnd method!");
         }
 
-        protected virtual void HandleCancel(ActionEventArgs arg)
+        protected virtual void HandleCancel()
         {
             throw new NotImplementedException("IGestureConsumer must create a HandleCancel method!");
         }

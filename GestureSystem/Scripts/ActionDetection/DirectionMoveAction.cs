@@ -25,7 +25,7 @@ namespace Cacophony {
             detector.OnStart.AddListener( HandleStart );
             detector.OnHold.AddListener( HandleHold );
             detector.OnEnd.AddListener( HandleEnd );
-            detector.OnCancel.AddListener( () => OnCancel?.Invoke(new ActionEventArgs { eventType = ActionEventType.CANCEL } ) );
+            detector.OnCancel.AddListener( () => OnCancel?.Invoke() );
         }
         
         public override void Evaluate(Vector3 position)
@@ -36,7 +36,7 @@ namespace Cacophony {
         private void HandleStart()
         {
             startPosition = currentPosition;
-            OnStart?.Invoke(new ActionEventArgs { position = currentPosition, progress = 0, eventType = ActionEventType.START });
+            OnStart?.Invoke(new ActionEventArgs { position = currentPosition, progress = 0});
             detecting = true;
         }
 
@@ -51,12 +51,12 @@ namespace Cacophony {
                 if (sufficientlyMoved)
                 {
                     // Should we set progress = 1?
-                    OnEnd?.Invoke(new ActionEventArgs { position = currentPosition, eventType = ActionEventType.COMPLETE });
+                    OnEnd?.Invoke(new ActionEventArgs { position = currentPosition});
                     detecting = false;   
                 }
                 else
                 {
-                    OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = distanceMoved / minDistanceM, eventType = ActionEventType.INPROGRESS });
+                    OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = distanceMoved / minDistanceM});
                 }
             }
         }
@@ -65,7 +65,7 @@ namespace Cacophony {
         {
             if (detecting)
             {
-                OnCancel?.Invoke(new ActionEventArgs { position = currentPosition, progress = 0, eventType = ActionEventType.CANCEL });
+                OnCancel?.Invoke();
             }
             detecting = false;
         }

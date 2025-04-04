@@ -41,7 +41,7 @@ namespace Cacophony
             StartCoroutine(resetRoutine);
         }
 
-        protected override void HandleCancel(ActionEventArgs pos)
+        protected override void HandleCancel()
         {
             OnGestureCancel.Invoke();
             StopCoroutine(resetRoutine);

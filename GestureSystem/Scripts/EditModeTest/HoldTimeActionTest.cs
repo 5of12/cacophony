@@ -44,7 +44,7 @@ public class HoldTimeActionTest
     public void GestureEndEventAfterStartCancelsDetection()
     {
         bool ended = false;
-        testAction.OnCancel.AddListener ( (ActionEventArgs pos) => {ended = true;} );
+        testAction.OnCancel.AddListener ( () => {ended = true;} );
 
         mockSource.OnStart.Invoke();
         mockSource.OnEnd.Invoke();
@@ -57,7 +57,7 @@ public class HoldTimeActionTest
     {
         bool ended = false;
         bool cancelled = false;
-        testAction.OnCancel.AddListener ((ActionEventArgs pos) => {cancelled = true;} );
+        testAction.OnCancel.AddListener (() => {cancelled = true;} );
         testAction.OnEnd.AddListener ( (ActionEventArgs pos) => {ended = true;} );
         
         mockSource.OnCancel.Invoke();
@@ -71,7 +71,7 @@ public class HoldTimeActionTest
     public void ActionPassesThroughCancelEvent()
     {
         bool cancelled = false;
-        testAction.OnCancel.AddListener ((ActionEventArgs pos) => {cancelled = true;} );
+        testAction.OnCancel.AddListener (() => {cancelled = true;} );
         mockSource.OnCancel.Invoke();
         
         Assert.IsTrue(cancelled);
@@ -85,7 +85,7 @@ public class HoldTimeActionTest
 
         Vector3 startPos = Vector3.one;
 
-        testAction.OnCancel.AddListener ((ActionEventArgs pos) => { cancelled = true; } );
+        testAction.OnCancel.AddListener (() => { cancelled = true; } );
         testAction.OnHold.AddListener ( (ActionEventArgs pos) => { holdCalls++; } );
         testAction.maxDistanceM = 0.1f;
 
