@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cd8048594ff241a08ce199151a5f103, type: 3}
-  m_Name: IndexPointing
+  m_Name: FiveFinger
   m_EditorClassIdentifier: 
   positivePoses:
-  - {fileID: 11400000, guid: 9d8a4db135f44499e8a7c555e186e675, type: 2}
-  - {fileID: 11400000, guid: 545272d2e13e34b1ba740b2c42074e8d, type: 2}
+  - {fileID: 11400000, guid: aa5a5a216e09340499ecf24fefb4941c, type: 2}
   negativePoses:
-  - {fileID: 11400000, guid: 0d181ed9ef0fb4acf85c6ed8e2979fb0, type: 2}
+  - {fileID: 11400000, guid: 9d8a4db135f44499e8a7c555e186e675, type: 2}
   - {fileID: 11400000, guid: 747a467baf0b3410ca1871fc01b82c69, type: 2}
-  - {fileID: 11400000, guid: f696d82f546494ddca1a895447b2085b, type: 2}
+  - {fileID: 11400000, guid: c42b0c5a5c2d34f7eaf9629034bfd702, type: 2}
+  - {fileID: 11400000, guid: 51086772320b54da880158b6075bcf31, type: 2}
+  - {fileID: 11400000, guid: 5195c97adc24f4a6ca326812c836c302, type: 2}
   confidenceThreshold: 0.9
