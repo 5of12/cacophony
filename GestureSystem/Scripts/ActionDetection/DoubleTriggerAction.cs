@@ -11,11 +11,18 @@ namespace Cacophony {
         [SerializeField] private float _maxTimeToConsiderDoubleTrigger = 0.558f;
         private float frameTolerance = 0.05f;
         private float _timeOfLastTrigger = -1000f;
-        private bool _waitingForFirstTrigger = false;
-        
-        public override void Initialise(IDetectionSource detector)
+        private float secondTriggerTimer;
+        private bool _waitingForFirstTrigger;
+        public bool WaitingForFirstTrigger
+        {
+            get { return _waitingForFirstTrigger; }
+            set { _waitingForFirstTrigger = value; }
+        }
+
+    public override void Initialise(IDetectionSource detector)
         {
             base.Initialise();
+            WaitingForFirstTrigger = true;
             detector.OnStart.AddListener( HandleStart );
             // NOTE: There is no notion of 'Hold/End/Cancel' for Double Trigger Action
             // OnEnd is fired after the second trigger of OnStart
@@ -25,6 +32,14 @@ namespace Cacophony {
         public override void Evaluate(Vector3 position)
         {
             currentPosition = position;
+            secondTriggerTimer += Time.deltaTime;
+            if (!WaitingForFirstTrigger && (secondTriggerTimer > _maxTimeToConsiderDoubleTrigger))
+            {
+                //Debug.Log("Exceeded Re-trigger time...RESET");
+                secondTriggerTimer = 0;
+                WaitingForFirstTrigger = true;
+                OnCancel?.Invoke();
+            }
         }
 
         private void OnStartTriggered()
@@ -32,28 +47,31 @@ namespace Cacophony {
             float deltaTriggerTime = Time.time - _timeOfLastTrigger;
             _timeOfLastTrigger = Time.time;
 
-            if (_waitingForFirstTrigger)
+            if (WaitingForFirstTrigger)
             {
                 // Trigger #1
-                _waitingForFirstTrigger = false;
+                WaitingForFirstTrigger = false;
+                OnHold?.Invoke(new ActionEventArgs { progress = 0.5f });
+                secondTriggerTimer = 0;
             }
             else if (deltaTriggerTime <= _maxTimeToConsiderDoubleTrigger)
             {
                 // Trigger #2
-                OnEnd?.Invoke(new ActionEventArgs { position = currentPosition });
+                OnEnd?.Invoke(new ActionEventArgs { position = currentPosition, progress = 1f });
                 _waitingForFirstTrigger = true;
             }
         }          
         
         private void HandleStart()
         {
-            if (_waitingForFirstTrigger){
-                OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
+            if (WaitingForFirstTrigger)
+            {
+                OnStart?.Invoke(new ActionEventArgs { position = currentPosition, progress = 0f });
             }
             else if (Time.time - _timeOfLastTrigger > (_maxTimeToConsiderDoubleTrigger + frameTolerance))
             {
-                _waitingForFirstTrigger = true;
-                OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
+                WaitingForFirstTrigger = true;
+                OnStart?.Invoke(new ActionEventArgs { position = currentPosition, progress = 0f });
             }
             OnStartTriggered();
         }

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Cacophony
 {
-    public class HandGestureDetectorRowUI : MonoBehaviour
+    public class GestureStateDebugRowUI : MonoBehaviour
     {
         public GestureState state;
         public Text stateText;
