@@ -6151,6 +6151,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6232644648546713449, guid: 5a035548394324d2b8f4ef0d59a26836, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232644648546713449, guid: 5a035548394324d2b8f4ef0d59a26836, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

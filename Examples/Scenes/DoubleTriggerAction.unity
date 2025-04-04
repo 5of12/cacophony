@@ -344,6 +344,10 @@ PrefabInstance:
       propertyPath: gestureDetector
       value: 
       objectReference: {fileID: 958806111}
+    - target: {fileID: 4223192598171782176, guid: 5a035548394324d2b8f4ef0d59a26836, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 606057575}
     - target: {fileID: 5018340526162412645, guid: 5a035548394324d2b8f4ef0d59a26836, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -427,6 +431,14 @@ PrefabInstance:
     - target: {fileID: 5791473875060352408, guid: 5a035548394324d2b8f4ef0d59a26836, type: 3}
       propertyPath: m_Name
       value: InfoCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232644648546713449, guid: 5a035548394324d2b8f4ef0d59a26836, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232644648546713449, guid: 5a035548394324d2b8f4ef0d59a26836, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -852,6 +864,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
+--- !u!114 &606057575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5451856111650076118, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
+  m_PrefabInstance: {fileID: 606057574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540cae33a0a5b46a6b8eb4224c7347fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &791329554
 GameObject:
   m_ObjectHideFlags: 0
