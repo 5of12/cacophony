@@ -14,10 +14,6 @@ namespace Cacophony
 
         public override float Evaluate(SimpleHandPose input)
         {
-            // Sum the dot products between available finger curls and normalise
-            // Sum the dot products between palm directions
-            // Return the product
-
             float confidence = 0;
             float count = 0;
 
