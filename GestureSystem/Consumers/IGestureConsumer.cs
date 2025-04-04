@@ -24,7 +24,14 @@ namespace Cacophony
         {
             if (manager != null)
             {
-                Initialise();
+                if ( manager.IsReady() )
+                {
+                    Initialise();
+                }
+                else
+                {
+                    manager.Ready.AddListener(Initialise);
+                }
             }
         }
 
@@ -34,6 +41,7 @@ namespace Cacophony
             manager.actionProcessor.OnHold.AddListener(HandleHold);
             manager.actionProcessor.OnEnd.AddListener(HandleEnd);
             manager.actionProcessor.OnCancel.AddListener(HandleCancel); 
+            manager.Ready.RemoveListener(Initialise);
         }
 
         protected virtual void OnDisable()
