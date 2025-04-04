@@ -33,7 +33,7 @@ namespace Cacophony {
         {
             startPosition = currentPosition;
             startTime = Time.time;
-            OnStart?.Invoke(new ActionEventArgs { position = currentPosition});
+            OnStart?.Invoke(new ActionEventArgs { position = currentPosition} );
             detecting = true;
         }
 
