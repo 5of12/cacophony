@@ -48,7 +48,7 @@ namespace Cacophony {
         private void HandleStart()
         {
             if (_waitingForFirstTrigger){
-                OnStart?.Invoke(new ActionEventArgs { position = currentPosition} );
+                OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
             }
             else if (Time.time - _timeOfLastTrigger > (_maxTimeToConsiderDoubleTrigger + frameTolerance))
             {
