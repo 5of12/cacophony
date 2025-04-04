@@ -35,3 +35,7 @@ MonoBehaviour:
       splay: 0.09215904
     palmDirection: {x: -0.1, y: 0, z: 1}
     palmNormal: {x: 0, y: 0, z: 0}
+  curlContribution: 1
+  bendContribution: 1
+  splayContribution: 1
+  directionContribution: 0.8
