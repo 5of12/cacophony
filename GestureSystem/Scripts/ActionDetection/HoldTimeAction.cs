@@ -21,7 +21,7 @@ namespace Cacophony {
             detector.OnStart.AddListener( HandleStart );
             detector.OnHold.AddListener( HandleHold );
             detector.OnEnd.AddListener( HandleEnd );
-            detector.OnCancel.AddListener( () => OnCancel?.Invoke());
+            detector.OnCancel.AddListener( () => OnCancel?.Invoke() );
         }
         
         public override void Evaluate(Vector3 position)
@@ -33,7 +33,7 @@ namespace Cacophony {
         {
             startPosition = currentPosition;
             startTime = Time.time;
-            OnStart?.Invoke(new ActionEventArgs { progress = 0, position = currentPosition});
+            OnStart?.Invoke(new ActionEventArgs { position = currentPosition});
             detecting = true;
         }
 
@@ -45,13 +45,13 @@ namespace Cacophony {
                 {
                     if (Time.time - startTime > holdTimeS)
                     {
-                        OnEnd?.Invoke(new ActionEventArgs { position = currentPosition});
+                        OnEnd?.Invoke(new ActionEventArgs { position = currentPosition });
                         detecting = false;
                     }
                     else
                     {
                         float time = Mathf.InverseLerp(startTime, startTime + holdTimeS, Time.time);
-                        OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = time});
+                        OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = time });
                     }
                 }
                 else

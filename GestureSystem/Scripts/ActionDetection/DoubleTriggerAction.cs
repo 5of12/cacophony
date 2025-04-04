@@ -40,7 +40,7 @@ namespace Cacophony {
             else if (deltaTriggerTime <= _maxTimeToConsiderDoubleTrigger)
             {
                 // Trigger #2
-                OnEnd?.Invoke(new ActionEventArgs { position = currentPosition});
+                OnEnd?.Invoke(new ActionEventArgs { position = currentPosition });
                 _waitingForFirstTrigger = true;
             }
         }          
@@ -53,7 +53,7 @@ namespace Cacophony {
             else if (Time.time - _timeOfLastTrigger > (_maxTimeToConsiderDoubleTrigger + frameTolerance))
             {
                 _waitingForFirstTrigger = true;
-                OnStart?.Invoke(new ActionEventArgs { position = currentPosition});
+                OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
             }
             OnStartTriggered();
         }

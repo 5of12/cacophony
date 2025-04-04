@@ -36,7 +36,7 @@ namespace Cacophony {
         private void HandleStart()
         {
             startPosition = currentPosition;
-            OnStart?.Invoke(new ActionEventArgs { position = currentPosition, progress = 0});
+            OnStart?.Invoke(new ActionEventArgs { position = currentPosition });
             detecting = true;
         }
 
@@ -50,13 +50,12 @@ namespace Cacophony {
 
                 if (sufficientlyMoved)
                 {
-                    // Should we set progress = 1?
-                    OnEnd?.Invoke(new ActionEventArgs { position = currentPosition});
+                    OnEnd?.Invoke(new ActionEventArgs { position = currentPosition });
                     detecting = false;   
                 }
                 else
                 {
-                    OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = distanceMoved / minDistanceM});
+                    OnHold?.Invoke(new ActionEventArgs { position = currentPosition, progress = distanceMoved / minDistanceM });
                 }
             }
         }
