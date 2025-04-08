@@ -17,6 +17,9 @@ public class LeapHandConnector : MonoBehaviour
     [Header ("Hand Management")]
     [Tooltip("Which hand to track and forward data for")]
     public Chirality handChirality;
+
+    [Tooltip("The active hand chirality")]
+    public Chirality activeChirality;
     public bool allowAnyHand = true;
 
     [Tooltip("The time in seconds to retain the last hand when hand is lost")]
@@ -52,6 +55,7 @@ public class LeapHandConnector : MonoBehaviour
         if (newHand != null && HandInInteractionBounds(newHand))
         {
             hand = newHand;
+            activeChirality = hand.GetChirality();
             timeLastSeen = Time.time;
             if (!handFound)
             {
