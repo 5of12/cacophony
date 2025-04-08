@@ -8,6 +8,7 @@ namespace Cacophony
         public SimpleHandPose currentHandPose;
         public Vector3 currentPosition;
         public IHandDataConnector handDataConnector;
+        
         void OnEnable()
         {
             currentHandPose = new();
