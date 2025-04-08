@@ -7,12 +7,11 @@ using UnityEngine;
 using Cacophony;
 using UnityEngine.Events;
 
-public class LeapHandConnector : MonoBehaviour
+public class LeapHandConnector : IHandDataConnector
 {
     #if ULTRALEAP
     public LeapServiceProvider leap;
     public SimpleHandPose simplePose;
-    public GameObject reciever;
 
     [Header ("Hand Management")]
     [Tooltip("Which hand to track and forward data for")]
@@ -22,31 +21,19 @@ public class LeapHandConnector : MonoBehaviour
     public Chirality activeChirality;
     public bool allowAnyHand = true;
 
-    [Tooltip("The time in seconds to retain the last hand when hand is lost")]
-    public float lostHandPersistence = 0.25f;
-    public Collider interactionBounds;
-
     private Hand hand;
     private float timeLastSeen;
-
-    public UnityEvent OnNoHandPresentAfterTimeout;
     public UnityEvent<Chirality> OnHandChiralityChanged;
 
     private bool handFound;
 
     private void Awake()
     {
-#if ULTRALEAP
         // Check that we have a LeapService Provider available...
         leap = FindFirstObjectByType<LeapServiceProvider>();
         if (leap == null) {
             Debug.LogError("Unable to obtain a LeapService Provider! Check one exists in the scene.");
         }
-#endif
-    }
-    void Start()
-    {
-        if (reciever == null) reciever = gameObject;
     }
 
     // Update is called once per frame
@@ -67,24 +54,22 @@ public class LeapHandConnector : MonoBehaviour
             if (!handFound)
             {
                 handFound = true;
-                if (reciever != null) reciever.SendMessage("EnableGesture");
+                OnHandFound.Invoke();
             }
             else
             {
                 simplePose = LeapHandToSimpleHand(hand);
-                if (reciever != null) reciever.SendMessage("SetHandPose", simplePose);
-                if (reciever != null) reciever.SendMessage("SetHandPosition", hand.PalmPosition);
+                OnNewData.Invoke(new HandDataEventArgs { handPose = simplePose, handPosition = hand.PalmPosition });
             }
         }
         else if (handFound && Time.time - timeLastSeen > lostHandPersistence)
         {
-            if (reciever != null) reciever.SendMessage("DisableGesture");
             OnNoHandPresentAfterTimeout.Invoke();
             handFound = false;
         }
     }
 
-    public Hand GetActiveHand()
+    private Hand GetActiveHand()
     {
         Hand hand = null;
         if(allowAnyHand)
