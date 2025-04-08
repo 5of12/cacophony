@@ -7,15 +7,45 @@ namespace Cacophony
     {
         public SimpleHandPose currentHandPose;
         public Vector3 currentPosition;
-
+        public IHandDataConnector handDataConnector;
         void OnEnable()
         {
             currentHandPose = new();
+            if (handDataConnector == null)
+            {
+                handDataConnector = FindFirstObjectByType<IHandDataConnector>();
+                if (handDataConnector == null)
+                {
+                    Debug.LogError("No hand data connector found. Please assign one in the inspector or ensure one is present in the scene.");
+                }
+                else
+                {
+                    handDataConnector.OnNewData.AddListener(OnHandDataReceived);
+                    handDataConnector.OnHandFound.AddListener(EnableGesture);
+                    handDataConnector.OnNoHandPresentAfterTimeout.AddListener(DisableGesture);
+                }
+            }
+        }
+
+        void OnDisable()
+        {
+            if (handDataConnector != null)
+            {
+                handDataConnector.OnNewData.RemoveListener(OnHandDataReceived);
+                handDataConnector.OnHandFound.RemoveListener(EnableGesture);
+                handDataConnector.OnNoHandPresentAfterTimeout.RemoveListener(DisableGesture);
+            }
         }
 
         void Update()
         {
             Evaluate(currentPosition, currentHandPose);
+        }
+
+        private void OnHandDataReceived(HandDataEventArgs eventArgs)
+        {
+            currentHandPose = eventArgs.handPose;
+            currentPosition = eventArgs.handPosition;
         }
 
         public void EnableGesture()
