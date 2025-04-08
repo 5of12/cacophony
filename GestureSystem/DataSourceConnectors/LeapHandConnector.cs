@@ -30,6 +30,7 @@ public class LeapHandConnector : MonoBehaviour
     private float timeLastSeen;
 
     public UnityEvent OnNoHandPresentAfterTimeout;
+    public UnityEvent<Chirality> OnHandChiralityChanged;
 
     private bool handFound;
 
@@ -54,8 +55,14 @@ public class LeapHandConnector : MonoBehaviour
         Hand newHand = GetActiveHand();
         if (newHand != null && HandInInteractionBounds(newHand))
         {
+            Chirality newChirality = newHand.GetChirality();
+            if (activeChirality != newChirality)
+            {
+                Debug.Log("Chirality changed to: " + newChirality);
+                OnHandChiralityChanged.Invoke(newChirality);
+            }
+            activeChirality = newChirality;
             hand = newHand;
-            activeChirality = hand.GetChirality();
             timeLastSeen = Time.time;
             if (!handFound)
             {
