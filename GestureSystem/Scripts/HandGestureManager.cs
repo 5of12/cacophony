@@ -19,7 +19,9 @@ namespace Cacophony
                 {
                     Debug.LogError("No hand data connector found. Please assign one in the inspector or ensure one is present in the scene.");
                 }
-                else
+            }
+            if (handDataConnector != null)
+            {
                 {
                     handDataConnector.OnNewData.AddListener(OnHandDataReceived);
                     handDataConnector.OnHandFound.AddListener(EnableGesture);
