@@ -45,7 +45,6 @@ public class LeapHandConnector : IHandDataConnector
             Chirality newChirality = newHand.GetChirality();
             if (activeChirality != newChirality)
             {
-                Debug.Log("Chirality changed to: " + newChirality);
                 OnHandChiralityChanged.Invoke(newChirality);
             }
             activeChirality = newChirality;
