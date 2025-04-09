@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3807180000479809937}
   - component: {fileID: 5451856111650076118}
   - component: {fileID: 1129876774283683341}
-  - component: {fileID: 1698163052539846189}
   m_Layer: 0
   m_Name: GestureManager
   m_TagString: Untagged
@@ -47,8 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gestureDetector: {fileID: 1129876774283683341}
-  actionProcessor: {fileID: 11400000, guid: a911d4a197a2e438a984a557a87b453d, type: 2}
-  initOnStart: 0
+  actionProcessor: {fileID: 11400000, guid: 5e8b368fb57fa4790955c69b16fbd06e, type: 2}
+  initOnStart: 1
+  Ready:
+    m_PersistentCalls:
+      m_Calls: []
   currentHandPose:
     thumb:
       curl: 0
@@ -73,6 +75,7 @@ MonoBehaviour:
     palmDirection: {x: 0, y: 0, z: 1}
     palmNormal: {x: 0, y: -1, z: 0}
   currentPosition: {x: 0, y: 0, z: 0}
+  handDataConnector: {fileID: 0}
 --- !u!114 &1129876774283683341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,47 +142,3 @@ MonoBehaviour:
   state: 0
   detectorOn: 1
   reset: 0
---- !u!114 &1698163052539846189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5602573295586849157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff65e725e69644b7993dc69a4895d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leap: {fileID: 0}
-  simplePose:
-    thumb:
-      curl: 0
-      bend: 0
-      splay: 0
-    index:
-      curl: 0
-      bend: 0
-      splay: 0
-    middle:
-      curl: 0
-      bend: 0
-      splay: 0
-    ring:
-      curl: 0
-      bend: 0
-      splay: 0
-    pinky:
-      curl: 0
-      bend: 0
-      splay: 0
-    palmDirection: {x: 0, y: 0, z: 1}
-    palmNormal: {x: 0, y: -1, z: 0}
-  reciever: {fileID: 0}
-  handChirality: 0
-  allowAnyHand: 1
-  lostHandPersistence: 0.25
-  interactionBounds: {fileID: 0}
-  OnNoHandPresentAfterTimeout:
-    m_PersistentCalls:
-      m_Calls: []
