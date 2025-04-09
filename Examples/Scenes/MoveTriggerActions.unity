@@ -759,7 +759,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 166326, guid: b9c7aaf0d314cb847a3b2a20e893f1b6, type: 3}
       propertyPath: m_Name
-      value: Service Provider (Desktop)
+      value: LeapHands
       objectReference: {fileID: 0}
     - target: {fileID: 432918, guid: b9c7aaf0d314cb847a3b2a20e893f1b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -807,14 +807,22 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 432918, guid: b9c7aaf0d314cb847a3b2a20e893f1b6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 34805535}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 166326, guid: b9c7aaf0d314cb847a3b2a20e893f1b6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 529411723}
   m_SourcePrefab: {fileID: 100100000, guid: b9c7aaf0d314cb847a3b2a20e893f1b6, type: 3}
+--- !u!1 &517255379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 166326, guid: b9c7aaf0d314cb847a3b2a20e893f1b6, type: 3}
+  m_PrefabInstance: {fileID: 517255378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &529411721 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11435192, guid: b9c7aaf0d314cb847a3b2a20e893f1b6, type: 3}
   m_PrefabInstance: {fileID: 517255378}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 517255379}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 025cc0fa7b46aa541aba29d28d35ac09, type: 3}
@@ -825,6 +833,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 432918, guid: b9c7aaf0d314cb847a3b2a20e893f1b6, type: 3}
   m_PrefabInstance: {fileID: 517255378}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &529411723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517255379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff65e725e69644b7993dc69a4895d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lostHandPersistence: 0.25
+  interactionBounds: {fileID: 0}
+  OnNewData:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHandFound:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNoHandPresentAfterTimeout:
+    m_PersistentCalls:
+      m_Calls: []
+  leap: {fileID: 529411721}
+  simplePose:
+    thumb:
+      curl: 0
+      bend: 0
+      splay: 0
+    index:
+      curl: 0
+      bend: 0
+      splay: 0
+    middle:
+      curl: 0
+      bend: 0
+      splay: 0
+    ring:
+      curl: 0
+      bend: 0
+      splay: 0
+    pinky:
+      curl: 0
+      bend: 0
+      splay: 0
+    palmDirection: {x: 0, y: 0, z: 1}
+    palmNormal: {x: 0, y: -1, z: 0}
+  handChirality: 0
+  activeChirality: 0
+  allowAnyHand: 1
+  OnHandChiralityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &606057574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1868,10 +1929,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1698163052539846189, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
-      propertyPath: leap
-      value: 
-      objectReference: {fileID: 529411721}
     - target: {fileID: 3807180000479809937, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1912,14 +1969,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5451856111650076118, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
-      propertyPath: initOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5451856111650076118, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
-      propertyPath: actionProcessor
-      value: 
-      objectReference: {fileID: 11400000, guid: 5e8b368fb57fa4790955c69b16fbd06e, type: 2}
     - target: {fileID: 5602573295586849157, guid: dcce8ebcf70cd479ba79ccbbd9a64c14, type: 3}
       propertyPath: m_Name
       value: MoveRightGestureManager

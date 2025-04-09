@@ -5,21 +5,25 @@ using Leap;
 
 using UnityEngine;
 using Cacophony;
+using UnityEngine.Events;
 
 public class LeapHandConnector : IHandDataConnector
 {
     #if ULTRALEAP
     public LeapServiceProvider leap;
     public SimpleHandPose simplePose;
-    // public GameObject reciever;
 
     [Header ("Hand Management")]
     [Tooltip("Which hand to track and forward data for")]
     public Chirality handChirality;
+
+    [Tooltip("The active hand chirality")]
+    public Chirality activeChirality;
     public bool allowAnyHand = true;
 
     private Hand hand;
     private float timeLastSeen;
+    public UnityEvent<Chirality> OnHandChiralityChanged;
 
     private bool handFound;
 
@@ -38,6 +42,12 @@ public class LeapHandConnector : IHandDataConnector
         Hand newHand = GetActiveHand();
         if (newHand != null && HandInInteractionBounds(newHand))
         {
+            Chirality newChirality = newHand.GetChirality();
+            if (activeChirality != newChirality)
+            {
+                OnHandChiralityChanged.Invoke(newChirality);
+            }
+            activeChirality = newChirality;
             hand = newHand;
             timeLastSeen = Time.time;
             if (!handFound)
