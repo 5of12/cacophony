@@ -2,9 +2,9 @@
 
 ![Cacophony A gesture library build for action](/media/Cacophony_banner.png "Cacophony banner")
 
-Cacophony is a gesture detection system for Unity. Designed for extensibility and speed when prototyping new ideas, and to reduce iteration time when building for reliability. 
+Cacophony is a **gesture detection system for Unity**. Designed for extensibility and speed when prototyping new ideas, and to reduce iteration time when building for reliability. 
 
-Included are examples for how to use gesture detection with Ultraleap Hand tracking, though the architecture is agnostic to the data source. With a little imagination you can use it with almost anything.
+Included are examples for how to use gesture detection with [Ultraleap Hand tracking](https://ultraleap.com), though the architecture is agnostic to the data source. With a little imagination you can use it with almost anything.
 
 Cacophony breaks down the process of building gesture detection for applications into three main parts:
 - Detecting a gesture to initiate interaction
@@ -15,44 +15,43 @@ To learn more about the thinking behind Cacophony you can read our short blog on
 
 ## Requirements
 
-Cacophony is build to work as a drop in package for Unity and has been tested with Unity 6.0. 
+Cacophony works as a drop in package for Unity and has been tested with Unity 6.0. 
 Previous versions of Unity should work, but have not been thoroughly tested.
 
 ## Quick Start - Ultraleap Hand Tracking Example
-(WIP: Replacing this with something more accessible)
 
 ### Project setup
 - Open or create a new Unity Project
 - Import Cacophony as a submodule or copy the files to a directory of your choice.
     - Navigate to `Assets/Plugins` in your project and run `git submodule add https://github.com/5of12/cacophony`
 - Follow the instructions at: [github.com/ultraleap/UnityPlugin](https://github.com/ultraleap/UnityPlugin) to install the Ultraleap plugin
-- IMPORTANT: In `ProjectSettings/Player` add `ULTRALEAP` to the `Script Compilation > Scripting Define Symbols` section. This enables the Ultraleap specific code required to process the data.
+- **IMPORTANT: In `ProjectSettings/Player` add `ULTRALEAP` to the `Script Compilation > Scripting Define Symbols` section**. This enables the Ultraleap specific code required to process the data.
 
 ### Scene Setup
-To start out you can check out one of the provided example scenes. 
+To start out, you can open one of the provided example scenes in: **cacophony/Examples/Scenes**
 
 ![Video of showing a virtual hand grabbing and releasing, then confetti is release](/media/Grab-Release.gif "Grab Release")
 
 Alternatively, starting from a new scene:
-- Add an Ultraleap hand tracking provider
-- On the Ultraleap Provider GameObject, add the `LeapHandConnector` component. This will take Ultraleap tracking data and turn it into a more general form for use be Cacophony.
+- Add an Ultraleap hand tracking provider from the Scene hierarcy right-click menu: `Ultraleap > Tracking > Service Provider (*)`
+- On the Service Provider GameObject, add the `LeapHandConnector` component. **This will take Ultraleap tracking data and convert into a usable form for cacophony.**
 - Add a `GestureManager` prefab to the scene from `cacophony/Prefabs`
 - Select the `GestureManger`. In the inspector, there are two components `Hand Gesture Manager` and `Hand Gesture Detector`.
     - On the `Hand Gesture Manager` observe the selected `Action Processor`, you can choose a different action asset here
     - On the `Hand Gesture Detector` observe the two options `Ready Gesture` and `Hand Gesture`, you can choose different gesture assets here
         - The `Ready Gesture` will be detected first, and until this is detected the action cannot trigger. It can be the same as the main Gesture you want to detect.
         - The `Hand Gesture` is the main focus of the interaction. When detected this will trigger action processing.
-- Connect an Ultraleap tracking camera and press play, you should be able to observe the confidence changing on the gesture detector and the active state changing when the gesture is detected. 
+- Connect an Ultraleap tracking camera and press play. You should be able to observe the confidence changing on the gesture detector and the active state changing when the gesture is detected. 
 
 To connect the gesture detection to application behaviour we need a `Consumer`, an object to receive the action events.
-- Exit playmode to return to editmode
-- Create new cube object in the scene and place it in front of the game camera.
+- Exit Play mode to return to Edit mode
+- Create a new cube object in the scene and place it in front of the game camera.
 - To add behaviour to your scene, create a new `GameObject` and add the `GestureConsumerUnityEvents` component. 
 - Connect the `OnGestureStart` event to the new cube in the inspector. Select the `GameObject` `SetActive` option to the event and make sure the checkbox is checked.
 - Connect the `OnGestureEnd` event to the new cube in the inspector. Select the `GameObject` `Set Active` option to the event and make sure the checkbox is unchecked.
 - Press play. You should now observe the cube being enabled when the gesture is first detected and disabled when the action completes.
 
-Checkout our [Cacophony Playground](https://github.com/5of12/Cacophony-Playground) to try out some examples and see how you can set up cacophony for different scenarios.
+Check out our [Cacophony Playground](https://github.com/5of12/Cacophony-Playground) for more examples and see how you can set up cacophony for different scenarios.
 
 ## Components of the system
 
@@ -82,17 +81,17 @@ Cacophony is built around scriptable assets for defining the parts of the system
 #### Gesture Definition
 * Open the `Cacophony` menu from the `Project View` context menu
 * Create a new `Hand Gesture` asset
-* Add the pose (or poses) that you want to detect to the list of positive poses
-* Add an poses you definitely don't want to detect to the list of negative poses
+* Add the pose (or poses) that **you want to detect** to the list of **Positive Poses**
+* Add a poses (or poses) you **definitely don't want to detect** to the list of **Negative Poses**
 * Set the `Confidence Threshold` to an appropriate value.
-* * If you have a single positive pose, a confidence value close to 1 will work
-* * If you have negative poses, overall confidence will be much lower (close to zero), so reduce the confidence accordingly. This might take some testing to find the right value
+* * If you have a single Positive Pose, a confidence value close to 1 will work
+* * If you have Negative Poses, overall confidence will be much lower (close to zero), so reduce the confidence accordingly. (This might take some testing to find the right value)
 
 #### Action Definition
 * Open the `Cacophony` menu from the `Project View` context menu
 * Create a new `HoldTimeAction`, `MovementAction` or `PassthroughAction` asset
-* `HoldTimeAction` allow you to set the time a pose must be held and a distance. If the hand moves further than the distance the timer is cancelled.
-* `MovementAction` allows you define a distance, direction and angle of movement. While the gesture is held a hand movement aligned to this will trigger the action. Moving outside the angle will cancel the action.
+* `HoldTimeAction` allows you to set the time a pose must be held and a distance. If the hand moves further than the distance the timer is cancelled.
+* `MovementAction` allows you define a distance, direction and angle of movement. While the gesture is held, a hand movement aligned to this will trigger the action. Moving outside the angle will cancel the action.
 * `PassthroughAction` relays the input events directly to matching output events, with an optional distance value for filtering very small hand movements.
 
 ### Setting up a gesture in the scene
@@ -102,11 +101,11 @@ Cacophony is built around scriptable assets for defining the parts of the system
 * Set the `Gesture` parameter to a `Hand Gesture` asset of your choice
 * Set the `Action` parameter to an asset of your choice
 
-The gesture manager will configure the gesture and action on start and triger updates every frame. It needs to be spplied with hand data however as otherwise it will always update with default values.
+The Gesture Manager will configure the gesture and action on start and triger updates every frame. It needs to be supplied with hand data, otherwise it will always update with default values.
 
 ## Action Output Events
 
-Actions output the following events that can be subscribed to by a consumer:
+Actions output the following events that can be subscribed to by a Consumer:
 
 * `Start` to indicate the gesture has been detected and the action is starting. This is accompanied by the position at which the gesture started
 * `Hold` to indicate the gesture is being held and the action is progressing, but has not yet completed. This is accompanied by the current source position
