@@ -1,26 +1,36 @@
 # Cacophony Gesture System
 
-A data agnostic gesture detection system for Unity. Designed for extensibility and speed when prototyping new ideas.
+![Cacophony A gesture library build for action](/media/Cacophony_logo.png "Cacophony banner")
+
+Cacophony is a gesture detection system for Unity. Designed for extensibility and speed when prototyping new ideas. Included are examples for how to use gesture detection with Ultraleap Hand tracking, though the architecture is agnostic to the data source. With a little imagination you can use it with almost anything.
+
+Cacophony breaks down the process of building gesture detection for applications into three main parts:
+- Detecting a gesture to initiate interaction
+- Processing the action performed by the user to derive intent
+- Facilitating clear reactions to the user input by the application
+
+To learn more about the thinking behind Cacophony you can read our short blog on the subject: [A Cacophony of Gestures](https://5of12.github.io/2025/04/07/a-cacophony-of-gestures.html)
+
 
 ## Requirements
 
 Cacophony is build to work as a drop in package for Unity and has been tested with Unity 6.0. 
-Previous versions of Unity should work, but are untested.
+Previous versions of Unity should work, but have not been thoroughly tested.
 
 ## Features
 
 ### Scriptable Assets
-These assets can be created programaticaly or in the editor.
+Cacophony is built around scriptable assets for defining the parts of the system you want to design specifically for your application. This makes iterating on the design of the interactions faster, with less time in code editors and waiting for recompilation. The assets can be created programaticaly or in the editor.
 
 * `Poses` defined by values for a set of input data.
 * `Gestures` define by a collection of positive and negative poses, and outputting a set of events.
-* `Actions` are triggered by actions plus additional constraints or movements, outputting their own set of events.
+* `Actions` are defined by constraints (eg. movements), outputting their own set of events.
 
 ## Getting Started
 
-`Gesture Managers` bring together an action and a gesture, provide them with data and control updates. These are the basic entry point to the system.
+`Gesture Managers` bring together an action and a gesture, provide them with data and control updates. These are the basic entry point to the system. The gesture manager provides the interface between Cacophony gestures and the application.
 
-`Consumers` hook into the action events that are routed via the `Gesture Manager`.
+`Consumers` hook into the action events that are routed via the `Gesture Manager`. These are optional components that demonstrate how you might interface with the gestures to get different effects.
 
 ### Hand Gesture Example
 
