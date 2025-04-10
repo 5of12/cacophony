@@ -2,7 +2,9 @@
 
 ![Cacophony A gesture library build for action](/media/Cacophony_banner.png "Cacophony banner")
 
-Cacophony is a gesture detection system for Unity. Designed for extensibility and speed when prototyping new ideas. Included are examples for how to use gesture detection with Ultraleap Hand tracking, though the architecture is agnostic to the data source. With a little imagination you can use it with almost anything.
+Cacophony is a gesture detection system for Unity. Designed for extensibility and speed when prototyping new ideas, and to reduce iteration time when building for reliability. 
+
+Included are examples for how to use gesture detection with Ultraleap Hand tracking, though the architecture is agnostic to the data source. With a little imagination you can use it with almost anything.
 
 Cacophony breaks down the process of building gesture detection for applications into three main parts:
 - Detecting a gesture to initiate interaction
@@ -11,13 +13,48 @@ Cacophony breaks down the process of building gesture detection for applications
 
 To learn more about the thinking behind Cacophony you can read our short blog on the subject: [A Cacophony of Gestures](https://5of12.github.io/2025/04/07/a-cacophony-of-gestures.html)
 
-
 ## Requirements
 
 Cacophony is build to work as a drop in package for Unity and has been tested with Unity 6.0. 
 Previous versions of Unity should work, but have not been thoroughly tested.
 
-## Features
+## Quick Start - Ultraleap Hand Tracking Example
+(WIP: Replacing this with something more accessible)
+
+### Project setup
+- Open or create a new Unity Project
+- Import Cacophony as a submodule or copy the files to a directory of your choice.
+    - Navigate to `Assets/Plugins` in your project and run `git submodule add https://github.com/5of12/cacophony`
+- Follow the instructions at: [github.com/ultraleap/UnityPlugin](https://github.com/ultraleap/UnityPlugin) to install the Ultraleap plugin
+- IMPORTANT: In `ProjectSettings/Player` add `ULTRALEAP` to the `Script Compilation > Scripting Define Symbols` section. This enables the Ultraleap specific code required to process the data.
+
+### Scene Setup
+To start out you can check out one of the provided example scenes. 
+
+![Video of showing a virtual hand grabbing and releasing, then confetti is release](/media/Grab-Release.gif "Grab Release")
+
+Alternatively, starting from a new scene:
+- Add an Ultraleap hand tracking provider
+- On the Ultraleap Provider GameObject, add the `LeapHandConnector` component. This will take Ultraleap tracking data and turn it into a more general form for use be Cacophony.
+- Add a `GestureManager` prefab to the scene from `cacophony/Prefabs`
+- Select the `GestureManger`. In the inspector, there are two components `Hand Gesture Manager` and `Hand Gesture Detector`.
+    - On the `Hand Gesture Manager` observe the selected `Action Processor`, you can choose a different action asset here
+    - On the `Hand Gesture Detector` observe the two options `Ready Gesture` and `Hand Gesture`, you can choose different gesture assets here
+        - The `Ready Gesture` will be detected first, and until this is detected the action cannot trigger. It can be the same as the main Gesture you want to detect.
+        - The `Hand Gesture` is the main focus of the interaction. When detected this will trigger action processing.
+- Connect an Ultraleap tracking camera and press play, you should be able to observe the confidence changing on the gesture detector and the active state changing when the gesture is detected. 
+
+To connect the gesture detection to application behaviour we need a `Consumer`, an object to receive the action events.
+- Exit playmode to return to editmode
+- Create new cube object in the scene and place it in front of the game camera.
+- To add behaviour to your scene, create a new `GameObject` and add the `GestureConsumerUnityEvents` component. 
+- Connect the `OnGestureStart` event to the new cube in the inspector. Select the `GameObject` `SetActive` option to the event and make sure the checkbox is checked.
+- Connect the `OnGestureEnd` event to the new cube in the inspector. Select the `GameObject` `Set Active` option to the event and make sure the checkbox is unchecked.
+- Press play. You should now observe the cube being enabled when the gesture is first detected and disabled when the action completes.
+
+Checkout our [Cacophony Playground](https://github.com/5of12/Cacophony-Playground) to try out some examples and see how you can set up cacophony for different scenarios.
+
+## Components of the system
 
 ### Scriptable Assets
 Cacophony is built around scriptable assets for defining the parts of the system you want to design specifically for your application. This makes iterating on the design of the interactions faster, with less time in code editors and waiting for recompilation. The assets can be created programaticaly or in the editor.
@@ -26,13 +63,13 @@ Cacophony is built around scriptable assets for defining the parts of the system
 * `Gestures` define by a collection of positive and negative poses, and outputting a set of events.
 * `Actions` are defined by constraints (eg. movements), outputting their own set of events.
 
-## Getting Started
+## Game Components
 
 `Gesture Managers` bring together an action and a gesture, provide them with data and control updates. These are the basic entry point to the system. The gesture manager provides the interface between Cacophony gestures and the application.
 
 `Consumers` hook into the action events that are routed via the `Gesture Manager`. These are optional components that demonstrate how you might interface with the gestures to get different effects.
 
-### Hand Gesture Example
+### Creating New Gestures - A Hand Gesture Example
 
 ### Creating Poses, Gesture Definitions, Actions
 #### Hand Pose
@@ -67,16 +104,7 @@ Cacophony is built around scriptable assets for defining the parts of the system
 
 The gesture manager will configure the gesture and action on start and triger updates every frame. It needs to be spplied with hand data however as otherwise it will always update with default values.
 
-#### Ultraleap Hand Data example
-
-* Add the `LeapHandConnector` component to your game object with the `HandGesturemanager` attached.
-* Follow the instructions at: [github.com/ultraleap/UnityPlugin](https://github.com/ultraleap/UnityPlugin) to install the Ultraleap plugin
-* IMPORTANT: In `ProjectSettings/Player` add `ULTRALEAP` to the `Script Compilation > Scripting Define Symbols` section, to enable the connector.
-* Add a `LeapServiceProvider` to the scene and assign it to the `LeapHandConnector` parameter.
-
-The connector will now send hand data in the correct format to the `Gesture Manager`
-
-## Output Events
+## Action Output Events
 
 Actions output the following events that can be subscribed to by a consumer:
 
@@ -84,3 +112,4 @@ Actions output the following events that can be subscribed to by a consumer:
 * `Hold` to indicate the gesture is being held and the action is progressing, but has not yet completed. This is accompanied by the current source position
 * `End` to indicate the action has been completed successfully. This is accompanied by the position at the time it completed
 * `Cancel` to indicate that the gesture was ended before the action completed.
+
