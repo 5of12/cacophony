@@ -4,7 +4,8 @@
 
 Cacophony is a **gesture detection system for Unity**. Designed for extensibility and speed when prototyping new ideas, and to reduce iteration time when building for reliability. 
 
-Included are examples for how to use gesture detection with [Ultraleap Hand tracking](https://ultraleap.com), though the architecture is agnostic to the data source. With a little imagination you can use it with almost anything.
+Examples are included which demonstrate hand gesture detection via [Ultraleap Hand tracking](https://ultraleap.com), though the architecture is agnostic to the data source. 
+_With a little imagination you can use it with almost anything..._
 
 Cacophony breaks down the process of building gesture detection for applications into three main parts:
 - Detecting a gesture to initiate interaction
@@ -66,7 +67,13 @@ Cacophony is built around scriptable assets for defining the parts of the system
 
 `Gesture Managers` bring together an action and a gesture, provide them with data and control updates. These are the basic entry point to the system. The gesture manager provides the interface between Cacophony gestures and the application.
 
-`Consumers` hook into the action events that are routed via the `Gesture Manager`. These are optional components that demonstrate how you might interface with the gestures to get different effects.
+`Consumers` hook into the action events that are routed via the `Gesture Manager`. 
+
+These are optional components that demonstrate how you to interface with gestures to get different effects. Examples of Consumers for Animation, Audio and Unity Events are found in `cacophony/GestureSystem/Consumers`:
+
+* `GestureConsumerAnimator.cs`
+* `GestureConsumerAudio.cs`
+* `GestureConsumerUnityEvents.cs`
 
 ### Creating New Gestures - A Hand Gesture Example
 
