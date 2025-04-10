@@ -2,6 +2,11 @@
 
 A data agnostic gesture detection system for Unity. Designed for extensibility and speed when prototyping new ideas.
 
+## Requirements
+
+Cacophony is build to work as a drop in package for Unity and has been tested with Unity 6.0. 
+Previous versions of Unity should work, but are untested.
+
 ## Features
 
 ### Scriptable Assets
