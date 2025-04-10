@@ -1,6 +1,6 @@
 # Cacophony Gesture System
 
-![Cacophony A gesture library build for action](/media/Cacophony_logo.png "Cacophony banner")
+![Cacophony A gesture library build for action](/media/Cacophony_banner.png "Cacophony banner")
 
 Cacophony is a gesture detection system for Unity. Designed for extensibility and speed when prototyping new ideas. Included are examples for how to use gesture detection with Ultraleap Hand tracking, though the architecture is agnostic to the data source. With a little imagination you can use it with almost anything.
 
