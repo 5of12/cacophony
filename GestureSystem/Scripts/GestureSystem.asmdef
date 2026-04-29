@@ -1,7 +1,9 @@
 {
     "name": "GestureSystem",
     "rootNamespace": "Cacophony",
-    "references": [],
+    "references": [
+        "UnityEngine.UI"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
